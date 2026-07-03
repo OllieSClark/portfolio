@@ -1,17 +1,23 @@
 @import "tailwindcss";
+@import "@fontsource/stix-two-text/400.css";
+@import "@fontsource/stix-two-text/400-italic.css";
+@import "@fontsource/stix-two-text/600.css";
+@import "@fontsource/stix-two-text/700.css";
+@import "./assets/fonts/cmu-serif.css";
 
 @theme {
-  --color-ink: #0B1220;
-  --color-surface: #121B2E;
-  --color-surface-2: #182238;
-  --color-paper: #E8E6DE;
-  --color-paper-dim: #A8A597;
-  --color-gold: #D4A72C;
-  --color-teal: #5FA8A0;
-  --color-line: #26314A;
+  /* Working Paper palette: warm paper ground, near-black ink, one red accent */
+  --color-paper: #FFF1E5;
+  --color-paper-dim: #F5E3D3;
+  --color-surface: #FBEADC;
+  --color-surface-2: #F2DFCC;
+  --color-ink: #1C1712;
+  --color-ink-dim: #6B5D50;
+  --color-red: #B33A2B;
+  --color-line: #E1CBB4;
 
-  --font-display: "Fraunces", ui-serif, Georgia, serif;
-  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "CMU Serif", "Latin Modern Roman", Georgia, serif;
+  --font-body: "STIX Two Text", "Georgia", serif;
   --font-mono: "IBM Plex Mono", ui-monospace, monospace;
 }
 
@@ -20,21 +26,21 @@ html {
 }
 
 body {
-  background-color: var(--color-ink);
-  color: var(--color-paper);
+  background-color: var(--color-paper);
+  color: var(--color-ink);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
 }
 
 ::selection {
-  background-color: var(--color-gold);
-  color: var(--color-ink);
+  background-color: var(--color-red);
+  color: var(--color-paper);
 }
 
 /* focus visibility kept intentional, not suppressed */
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid var(--color-teal);
+  outline: 2px solid var(--color-red);
   outline-offset: 3px;
 }
 
@@ -55,4 +61,27 @@ button:focus-visible {
 .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Reviewer's-pen claim underline — the site's one recurring "look here" mark */
+.claim {
+  position: relative;
+  cursor: help;
+  text-decoration: underline;
+  text-decoration-color: var(--color-red);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+  text-decoration-style: wavy;
+}
+
+/* Numbered figure/caption furniture */
+.fig-caption {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  color: var(--color-ink-dim);
+}
+.fig-caption .fig-number {
+  color: var(--color-red);
+  font-weight: 600;
 }
