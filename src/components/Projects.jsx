@@ -80,8 +80,6 @@ function ProjectRow({ project, number }) {
                 Repository ↗
               </a>
             )}
-            {/* TODO: public/brglm2-report.pdf pending (as is /cv.pdf) — link
-                404s until the file is dropped in */}
             {project.report && (
               <a
                 href={project.report}
