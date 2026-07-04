@@ -5,7 +5,7 @@ const BIBTEX = `@misc{clark2026portfolio,
   title        = {Statistics, optimisation, and the cost of being wrong at scale},
   year         = {2026},
   howpublished = {Working paper (personal portfolio)},
-  note         = {MDatSci, Statistics \\& Machine Learning, University of Warwick}
+  note         = {MDatSci (Data Science), University of Warwick}
 }`;
 
 export default function CiteButton() {

@@ -53,6 +53,14 @@ const references = [
     venue: "Software fork of ikosmidis/brglm2",
     url: "https://github.com/OllieSClark/brglm2",
   },
+  {
+    id: 7,
+    authors: "Anthropic",
+    year: 2026,
+    title: "Claude (Fable 5) [Large language model]",
+    venue: "Used in the design and construction of this site",
+    url: "https://claude.ai",
+  },
 ];
 
 export default references;

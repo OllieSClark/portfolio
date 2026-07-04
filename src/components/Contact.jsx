@@ -1,18 +1,31 @@
 import Typed from "../typeset/Typed";
 import Compiled from "../typeset/Compiled";
+import SectionEyebrow from "./SectionEyebrow";
+import PlateCluster from "./PlateCluster";
 import { correspondenceHead, correspondenceBody } from "../data/paper";
+import trio from "../assets/plates/trio.jpg";
+import pair from "../assets/plates/pair.jpg";
+import ball from "../assets/plates/ball.jpg";
 
 const GITHUB_URL = "https://github.com/OllieSClark";
-const LINKEDIN_URL = "https://www.linkedin.com/in/your-username";
+const LINKEDIN_URL = "https://www.linkedin.com/in/oliver-clark-a8926729b";
 const EMAIL = "ollie@orcus.co.uk";
 
 export default function Contact() {
   return (
     <section id="correspondence" className="border-t border-line">
-      <div className="max-w-4xl mx-auto px-6 sm:px-10 py-20 sm:py-28">
-        <p className="font-mono text-xs uppercase tracking-[0.25em] text-red mb-4">
-          &sect;4&nbsp;&nbsp;Correspondence
-        </p>
+      <div className="max-w-4xl mx-auto px-6 sm:px-10 py-20 sm:py-28 relative">
+        <PlateCluster
+          numeral="III"
+          caption="The research group, annual meeting."
+          className="xl:top-20"
+          photos={[
+            { src: pair, alt: "The author and a friend at a summer ball" },
+            { src: ball, alt: "A large group in formalwear on stone steps" },
+            { src: trio, alt: "Three friends in evening dress on a lawn" },
+          ]}
+        />
+        <SectionEyebrow n={4} title="Correspondence" className="mb-4" />
         <Typed
           order={150}
           script={correspondenceHead}

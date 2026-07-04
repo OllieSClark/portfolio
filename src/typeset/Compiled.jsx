@@ -5,7 +5,7 @@ import { useTypeset } from "./TypesetContext";
 // short settle when its turn in the document order arrives. Optionally fires
 // marks (e.g. resolving a reviewer comment) when it lands.
 export default function Compiled({ order, marks = [], children, className = "" }) {
-  const { register, setReady, notifyDone, fireMark } = useTypeset();
+  const { register, setReady, setVisibility, notifyDone, fireMark } = useTypeset();
   const [visible, setVisible] = useState(false);
   const elRef = useRef(null);
 
@@ -30,16 +30,14 @@ export default function Compiled({ order, marks = [], children, className = "" }
     if (!node) return;
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setReady(order);
-          observer.unobserve(node);
-        }
+        setVisibility(order, entry.isIntersecting);
+        if (entry.isIntersecting) setReady(order);
       },
       { threshold: 0.05 }
     );
     observer.observe(node);
     return () => observer.disconnect();
-  }, [order, setReady]);
+  }, [order, setReady, setVisibility]);
 
   return (
     <div ref={elRef} className={`ts-compile ${visible ? "is-set" : ""} ${className}`}>

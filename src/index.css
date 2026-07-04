@@ -72,6 +72,7 @@ button:focus-visible {
   text-decoration-thickness: 1.5px;
   text-underline-offset: 3px;
   text-decoration-style: wavy;
+  text-decoration-skip-ink: none;
 }
 
 /* ---- typeset engine visuals ---- */
@@ -158,6 +159,16 @@ button:focus-visible {
   text-decoration: line-through;
   text-decoration-thickness: 1px;
   opacity: 0.65;
+}
+
+/* Clawd, the compile-footer crab — a small side-to-side waddle */
+@keyframes claude-bob {
+  0%, 100% { transform: translateX(-1.5px) rotate(-4deg); }
+  50% { transform: translateX(1.5px) rotate(4deg); }
+}
+.claude-mark {
+  animation: claude-bob 1.6s ease-in-out infinite;
+  transform-origin: bottom center;
 }
 
 /* Numbered figure/caption furniture */

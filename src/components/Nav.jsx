@@ -1,9 +1,32 @@
+import { useMarkFired } from "../typeset/TypesetContext";
+
+// The outline builds itself: each section's nav entry appears the moment its
+// prose starts being written (a mark at the head of the section's first
+// script). Slots are always rendered so the layout never shifts; scrolled-past
+// sections force-complete and backfill their entries.
 const links = [
-  { href: "#introduction", label: "§1 Intro" },
-  { href: "#results", label: "§2 Results" },
-  { href: "#references", label: "§3 Refs" },
-  { href: "#correspondence", label: "§4 Contact" },
+  { href: "#introduction", label: "§1 Intro", markId: "sec-intro" },
+  { href: "#results", label: "§2 Results", markId: "sec-results" },
+  { href: "#references", label: "§3 Refs", markId: "sec-refs" },
+  { href: "#correspondence", label: "§4 Contact", markId: "sec-contact" },
 ];
+
+function NavLink({ href, label, markId }) {
+  const fired = useMarkFired(markId);
+  return (
+    <a
+      href={href}
+      aria-hidden={!fired}
+      tabIndex={fired ? 0 : -1}
+      className={`font-mono text-xs uppercase tracking-widest text-ink-dim hover:text-ink
+        transition-all duration-500 ${
+          fired ? "opacity-100 translate-y-0" : "opacity-0 translate-y-1 pointer-events-none"
+        }`}
+    >
+      {label}
+    </a>
+  );
+}
 
 export default function Nav() {
   return (
@@ -17,13 +40,7 @@ export default function Nav() {
         </a>
         <nav className="hidden sm:flex items-center gap-6">
           {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="font-mono text-xs uppercase tracking-widest text-ink-dim hover:text-ink transition-colors"
-            >
-              {l.label}
-            </a>
+            <NavLink key={l.href} {...l} />
           ))}
           <a
             href="/cv.pdf"

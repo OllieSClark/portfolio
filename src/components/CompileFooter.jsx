@@ -1,4 +1,6 @@
+import { useEffect } from "react";
 import { useTypeset } from "../typeset/TypesetContext";
+import ClaudeMark from "./ClaudeMark";
 
 const revisions = [
   ["v0.1", "scaffold"],
@@ -8,9 +10,15 @@ const revisions = [
 ];
 
 export default function CompileFooter() {
-  const { allDone } = useTypeset();
+  const { allDone, fireMark } = useTypeset();
   const version = allDone ? "v0.4" : "v0.3";
   const date = new Date().toISOString().slice(0, 10);
+
+  // this credit lives outside the typed prose, so its citation fires as soon
+  // as the footer itself is on the page rather than waiting on a typed cite()
+  useEffect(() => {
+    fireMark("cite-7");
+  }, [fireMark]);
 
   return (
     <footer className="max-w-4xl mx-auto px-6 sm:px-10 py-8 space-y-3">
@@ -25,7 +33,9 @@ export default function CompileFooter() {
       <p className="font-mono text-[11px] text-ink-dim/70 border-t border-line pt-3">
         Compiled {date} &middot; pdfTeX-live (spiritually) &middot; draft{" "}
         <span className={allDone ? "text-red" : ""}>{version}</span> &middot;
-        &copy; {new Date().getFullYear()} Ollie Clark
+        &copy; {new Date().getFullYear()} Ollie Clark &middot; typeset with{" "}
+        <ClaudeMark className="mx-0.5" />
+        Claude<sup className="ts-cite"><a href="#ref-7">[7]</a></sup>
       </p>
     </footer>
   );

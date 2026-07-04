@@ -1,6 +1,8 @@
 import Typed from "../typeset/Typed";
 import Compiled from "../typeset/Compiled";
 import Sidenote from "./Sidenote";
+import RedMarginNote from "./RedMarginNote";
+import SectionEyebrow from "./SectionEyebrow";
 import { introduction } from "../data/paper";
 
 const keywords = [
@@ -15,16 +17,17 @@ export default function About() {
   return (
     <section id="introduction" className="border-t border-line">
       <div className="max-w-4xl mx-auto px-6 sm:px-10 py-20 sm:py-28">
-        <p className="font-mono text-xs uppercase tracking-[0.25em] text-red mb-8">
-          &sect;1&nbsp;&nbsp;Introduction
-        </p>
+        <SectionEyebrow n={1} title="Introduction" />
         <div className="grid sm:grid-cols-[2fr_1fr] gap-12">
           <div className="relative">
+            <RedMarginNote fireId="intro-done" side="left">
+              tighten this (v0.5)
+            </RedMarginNote>
             <Sidenote n={1}>
               The original plan was gradient methods (Adam, L-BFGS); the pivot
               to trust region came mid-project, when gradient methods turned
-              out not to exploit the adjusted-score structure &mdash; a
-              documented, examiner-praised judgement call.
+              out not to exploit the adjusted-score structure, a documented,
+              examiner-praised judgement call.
             </Sidenote>
             <Typed
               order={50}

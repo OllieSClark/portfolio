@@ -18,13 +18,14 @@ const speedupEvidence = (
 
 export const heroTitle = [
   t("Statistics, optimisation, and the cost of being wrong at scale", { cps: 34 }),
+  mark("hero-title-done"),
 ];
 
 export const heroAbstract = [
   t("Data science ", { cps: 95 }),
   typo("studnet", "student"),
   t(
-    " at Warwick specialising in quantitative finance — the intersection of statistical rigour (GLMs, mathematical finance) and modern ML (neural networks, optimisation). Most recent work: a from-scratch trust-region optimiser that made bias-reduced GLM fitting",
+    " at Warwick specialising in quantitative finance, the intersection of statistical rigour (GLMs, mathematical finance) and modern ML (neural networks, optimisation). Most recent work: a from-scratch trust-region optimiser that made bias-reduced GLM fitting",
     { cps: 95 }
   ),
   swap(" much faster", "up to 168.6× faster", {
@@ -35,14 +36,17 @@ export const heroAbstract = [
 ];
 
 export const introduction = [
+  mark("sec-intro"),
   t(
-    "I work at the point where statistics and ML overlap in quant finance: GLMs give valid, interpretable inference; ML models predict better when the true relationship is too complex for a closed form. The brglm2 project (§2.1) sits exactly there — a classical statistical method, bias-reduced GLM estimation, made practical at scale through modern numerical optimisation.",
+    "I work at the point where statistics and ML overlap in quant finance: GLMs give valid, interpretable inference; ML models predict better when the true relationship is too complex for a closed form. The brglm2 project (§2.1) sits exactly there: a classical statistical method, bias-reduced GLM estimation, made practical at scale through modern numerical optimisation.",
     { cps: 100 }
   ),
+  mark("intro-done"),
 ];
 
 export const projectScripts = {
   brglm2: [
+    mark("sec-results"),
     t(
       "Forked brglm2 (the standard R package for bias-reduction in GLMs) and replaced its default quasi-Fisher scoring fit routine with a trust-region framework built from scratch: a CG-Steihaug subproblem solver",
       { cps: 130 }
@@ -50,7 +54,7 @@ export const projectScripts = {
     cite(2),
     mark("r2"),
     t(
-      " with Jacobi preconditioning, adaptive hat-value scheduling, sparse Cholesky dispatch, and a vectorised rewrite of the median bias-reduction adjustment. Bias-reduced estimation is needed most exactly where it is most expensive — high-dimensional, separated, or sparse data — so a method that doesn't scale is unusable in the regime it was built for. Full implementation public",
+      " with Jacobi preconditioning, adaptive hat-value scheduling, sparse Cholesky dispatch, and a vectorised rewrite of the median bias-reduction adjustment. Bias-reduced estimation is needed most exactly where it is most expensive: high-dimensional, separated, or sparse data. A method that doesn't scale is unusable in the regime it was built for. Full implementation public",
       { cps: 130 }
     ),
     cite(6),
@@ -58,26 +62,36 @@ export const projectScripts = {
   ],
   bny: [
     t(
-      "Working in the Foundations team on workflow orchestration and diagnostics tooling built around AI agents. Full write-up to follow once the internship concludes and disclosure limits are confirmed.",
+      "Currently interning in the Foundations team, working on workflow orchestration and diagnostics tooling built around AI agents. Full write-up to follow once the internship concludes and disclosure limits are confirmed.",
       { cps: 120 }
     ),
   ],
   wq: [
     t(
-      "Designed and backtested alpha signals on WorldQuant's BRAIN platform, progressing to the IQC final round. Focus on signal construction, turnover/decay trade-offs, and robustness across simulation regimes.",
+      "Designed and backtested alpha signals on WorldQuant's BRAIN platform",
+      { cps: 120 }
+    ),
+    swap(", and did well", ", progressing to the final round of the International Quant Championship"),
+    mark("wq-note"),
+    t(
+      ". Focus on signal construction, turnover/decay trade-offs, and robustness across simulation regimes.",
       { cps: 120 }
     ),
   ],
   diss: [
-    t("Investigating whether diffusion models'", { cps: 130 }),
+    t("Upcoming (starts July 2026): investigating whether diffusion models'", {
+      cps: 130,
+    }),
     cite(3),
+    t(" better-calibrated implied ", { cps: 130 }),
+    typo("volitility", "volatility"),
     t(
-      " better-calibrated implied volatility surfaces translate into a measurable options-hedging edge over GAN-based approaches",
+      " surfaces translate into a measurable options-hedging edge over GAN-based approaches",
       { cps: 130 }
     ),
     cite(5),
     t(
-      " — extending very recent exact-conditional diffusion methodology",
+      ", extending very recent exact-conditional diffusion methodology",
       { cps: 130 }
     ),
     cite(4),
@@ -107,11 +121,14 @@ export const acknowledgements = [
   ),
 ];
 
-export const correspondenceHead = [t("Let's talk about the work.", { cps: 40 })];
+export const correspondenceHead = [
+  mark("sec-contact"),
+  t("Let's talk about the work.", { cps: 40 }),
+];
 
 export const correspondenceBody = [
   t(
-    "Open to quant research conversations for autumn 2026. The fastest way to reach me is email — CV below.",
+    "Open to quant research conversations for autumn 2026. The fastest way to reach me is email. CV below.",
     { cps: 130 }
   ),
 ];

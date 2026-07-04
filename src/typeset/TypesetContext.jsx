@@ -37,13 +37,35 @@ export function TypesetProvider({ children }) {
 
   const schedule = useCallback(() => {
     const entries = [...regionsRef.current.entries()].sort((a, b) => a[0] - b[0]);
-    if (entries.some(([, r]) => r.status === "typing")) return;
     const readyAfter = (idx) =>
       entries.slice(idx + 1).some(([, r]) => r.status === "ready");
+
+    // a region typing off-screen with a visible one waiting below was
+    // scrolled past mid-play — fast-forward it rather than making the
+    // reader wait for text above the viewport
+    const typingIdx = entries.findIndex(([, r]) => r.status === "typing");
+    if (typingIdx !== -1) {
+      const [, tr] = entries[typingIdx];
+      if (tr.visible === false && readyAfter(typingIdx)) {
+        tr.status = "done";
+        tr.finishNow();
+      } else {
+        return;
+      }
+    }
+
     for (let idx = 0; idx < entries.length; idx++) {
       const [, rec] = entries[idx];
       if (rec.status === "done") continue;
       if (rec.status === "ready") {
+        // ready but no longer on screen (e.g. a fast scroll made every
+        // region intersect transiently): complete instantly instead of
+        // typing the whole backlog in real time
+        if (rec.visible === false && readyAfter(idx)) {
+          rec.status = "done";
+          rec.finishNow();
+          continue;
+        }
         rec.status = "typing";
         rec.play();
         return;
@@ -84,6 +106,18 @@ export function TypesetProvider({ children }) {
         rec.status = "ready";
         schedule();
       }
+    },
+    [schedule]
+  );
+
+  // live viewport tracking so the scheduler can tell "ready and on screen"
+  // from "made ready by a transient intersection during a fast scroll"
+  const setVisibility = useCallback(
+    (order, visible) => {
+      const rec = regionsRef.current.get(order);
+      if (!rec || rec.visible === visible) return;
+      rec.visible = visible;
+      schedule();
     },
     [schedule]
   );
@@ -130,11 +164,22 @@ export function TypesetProvider({ children }) {
       fireMark,
       register,
       setReady,
+      setVisibility,
       notifyDone,
       finishRegion,
       skipEverything,
     }),
-    [marks, allDone, fireMark, register, setReady, notifyDone, finishRegion, skipEverything]
+    [
+      marks,
+      allDone,
+      fireMark,
+      register,
+      setReady,
+      setVisibility,
+      notifyDone,
+      finishRegion,
+      skipEverything,
+    ]
   );
 
   return <TypesetContext.Provider value={value}>{children}</TypesetContext.Provider>;

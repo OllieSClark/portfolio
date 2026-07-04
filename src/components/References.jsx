@@ -1,5 +1,6 @@
 import references from "../data/references";
 import Compiled from "../typeset/Compiled";
+import SectionEyebrow from "./SectionEyebrow";
 import { useMarkFired } from "../typeset/TypesetContext";
 
 function Entry({ r }) {
@@ -32,10 +33,11 @@ export default function References({ order }) {
   return (
     <section id="references" className="border-t border-line">
       <div className="max-w-4xl mx-auto px-6 sm:px-10 py-20 sm:py-24">
-        <p className="font-mono text-xs uppercase tracking-[0.25em] text-red mb-8">
-          &sect;3&nbsp;&nbsp;References
-        </p>
-        <Compiled order={order} marks={references.map((r) => `cite-${r.id}`)}>
+        <SectionEyebrow n={3} title="References" />
+        <Compiled
+          order={order}
+          marks={["sec-refs", ...references.map((r) => `cite-${r.id}`)]}
+        >
           <ol className="space-y-3 max-w-3xl pl-1">
             {references.map((r) => (
               <Entry key={r.id} r={r} />

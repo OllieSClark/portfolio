@@ -31,7 +31,8 @@ function renderSegment(s) {
 // A typed prose region. `order` is its global document-order slot; the
 // TypesetContext scheduler decides when it plays. Click fast-forwards it.
 export default function Typed({ order, script, as: Tag = "p", className = "" }) {
-  const { register, setReady, notifyDone, finishRegion, fireMark } = useTypeset();
+  const { register, setReady, setVisibility, notifyDone, finishRegion, fireMark } =
+    useTypeset();
   const [segments, setSegments] = useState([]);
   const [status, setStatus] = useState("idle");
   const elRef = useRef(null);
@@ -73,16 +74,14 @@ export default function Typed({ order, script, as: Tag = "p", className = "" }) 
     if (!node) return;
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setReady(order);
-          observer.unobserve(node);
-        }
+        setVisibility(order, entry.isIntersecting);
+        if (entry.isIntersecting) setReady(order);
       },
       { threshold: 0.05 }
     );
     observer.observe(node);
     return () => observer.disconnect();
-  }, [order, setReady]);
+  }, [order, setReady, setVisibility]);
 
   const handleClick = () => {
     if (statusRef.current === "typing") finishRegion(order);
