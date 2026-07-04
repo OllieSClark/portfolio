@@ -1,30 +1,47 @@
-import useReveal from "../hooks/useReveal";
 import projects from "../data/projects";
 import BenchmarkFigure from "./BenchmarkFigure";
-import Claim from "./Claim";
+import ResultsTable from "./ResultsTable";
+import RedMarginNote from "./RedMarginNote";
+import Sidenote from "./Sidenote";
+import Typed from "../typeset/Typed";
+import Compiled from "../typeset/Compiled";
+import { projectScripts, brglm2Result } from "../data/paper";
+
+// Document-order slots for the typed regions in §2 (spaced for insertion).
+const ORDERS = { brglm2: 80, bny: 100, wq: 110, diss: 120 };
 
 function ProjectRow({ project, number }) {
-  const ref = useReveal();
   return (
-    <div
-      ref={ref}
-      className="reveal py-10 border-t border-line first:border-t-0"
-    >
+    <div className="py-10 border-t border-line first:border-t-0">
       <div className="grid sm:grid-cols-[140px_1fr] gap-4 sm:gap-10">
         <div className="font-mono text-xs text-ink-dim uppercase tracking-wider pt-1">
           {number} &middot; {project.period}
         </div>
 
-        <div>
+        <div className="relative">
           <p className="font-mono text-[11px] uppercase tracking-widest text-red mb-2">
             {project.tag}
           </p>
           <h3 className="font-display text-xl sm:text-2xl text-ink">
             {project.title}
           </h3>
-          <p className="font-body text-ink/90 mt-3 max-w-2xl leading-relaxed">
-            {project.description}
-          </p>
+          {project.id === "brglm2" && (
+            <RedMarginNote fireId="r2" resolveId="r2-resolved">
+              needs evidence — R2
+            </RedMarginNote>
+          )}
+          <Typed
+            order={ORDERS[project.id]}
+            script={projectScripts[project.id]}
+            as="p"
+            className="font-body text-ink/90 mt-3 max-w-2xl leading-relaxed"
+          />
+          {project.id === "diss" && (
+            <Sidenote n={2}>
+              Starts July 2026 &mdash; a plan, not results. This entry gets
+              rewritten from actual status as the year progresses.
+            </Sidenote>
+          )}
           <div className="flex flex-wrap gap-x-4 gap-y-2 mt-5">
             {project.meta.map((m) => (
               <span
@@ -50,23 +67,16 @@ function ProjectRow({ project, number }) {
 
       {project.benchmark && (
         <div className="sm:ml-[184px] mt-8">
-          <p className="font-body text-ink/90 max-w-2xl leading-relaxed mb-6">
-            Result:{" "}
-            <Claim
-              evidence={
-                <p className="text-ink-dim">
-                  See Fig. 2 below — full range plotted against the 1x
-                  Fisher-scoring baseline, with test-suite and coefficient
-                  agreement.
-                </p>
-              }
-            >
-              31.65x&ndash;168.6x speedup
-            </Claim>{" "}
-            across dense and sparse scenarios, coefficient agreement &lt;10&#8315;&#8310;
-            against the original package, with the existing 394-test suite green.
-          </p>
-          <BenchmarkFigure />
+          <Typed
+            order={85}
+            script={brglm2Result}
+            as="p"
+            className="font-body text-ink/90 max-w-2xl leading-relaxed mb-6"
+          />
+          <Compiled order={90} marks={["r2-resolved"]}>
+            <BenchmarkFigure />
+            <ResultsTable className="mt-8" />
+          </Compiled>
         </div>
       )}
     </div>
@@ -85,7 +95,7 @@ export default function Projects() {
         </h2>
         <div>
           {projects.map((p, i) => (
-            <ProjectRow key={p.title} project={p} number={`2.${i + 1}`} />
+            <ProjectRow key={p.id} project={p} number={`2.${i + 1}`} />
           ))}
         </div>
       </div>

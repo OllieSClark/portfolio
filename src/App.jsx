@@ -2,23 +2,34 @@ import Nav from "./components/Nav";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Projects from "./components/Projects";
+import Acknowledgements from "./components/Acknowledgements";
+import References from "./components/References";
 import Contact from "./components/Contact";
 import MarginRail from "./components/MarginRail";
+import CompileFooter from "./components/CompileFooter";
+import SkipTypesetting from "./components/SkipTypesetting";
 import { AnnotationProvider } from "./components/AnnotationContext";
+import { TypesetProvider } from "./typeset/TypesetContext";
 
 export default function App() {
   return (
-    <AnnotationProvider>
-      <div className="bg-paper text-ink">
-        <Nav />
-        <main>
-          <Hero />
-          <About />
-          <Projects />
-          <Contact />
-        </main>
-        <MarginRail />
-      </div>
-    </AnnotationProvider>
+    <TypesetProvider>
+      <AnnotationProvider>
+        <div className="bg-paper text-ink">
+          <Nav />
+          <main>
+            <Hero />
+            <About />
+            <Projects />
+            <Acknowledgements />
+            <References order={140} />
+            <Contact />
+          </main>
+          <CompileFooter />
+          <MarginRail />
+          <SkipTypesetting />
+        </div>
+      </AnnotationProvider>
+    </TypesetProvider>
   );
 }

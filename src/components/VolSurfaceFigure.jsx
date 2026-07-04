@@ -89,7 +89,8 @@ export default function VolSurfaceFigure({ className = "" }) {
       <canvas ref={canvasRef} className="w-full h-full" aria-hidden="true" />
       <figcaption className="fig-caption mt-2">
         <span className="fig-number">Fig. 1.</span> Implied volatility surface,
-        recalibrating live (illustrative smile-skew simulation, not market data).
+        recalibrating live over sample paths of (1) (illustrative smile-skew
+        simulation, not market data).
       </figcaption>
     </figure>
   );

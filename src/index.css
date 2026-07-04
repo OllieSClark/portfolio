@@ -74,6 +74,92 @@ button:focus-visible {
   text-decoration-style: wavy;
 }
 
+/* ---- typeset engine visuals ---- */
+
+/* reviewer's-pen caret at the type point */
+@keyframes ts-caret-blink {
+  0%, 55% { opacity: 1; }
+  56%, 100% { opacity: 0; }
+}
+.ts-caret {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  margin-left: 1px;
+  background-color: var(--color-red);
+  vertical-align: text-bottom;
+  animation: ts-caret-blink 0.9s step-end infinite;
+}
+
+/* a typo mid-deletion reads as an error being noticed */
+.ts-typo {
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: var(--color-red);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+/* reviewer swap: vague wording struck through, precise follows */
+.ts-strike {
+  transition: color 0.3s ease;
+}
+.ts-strike.is-struck {
+  color: var(--color-ink-dim);
+  text-decoration: line-through;
+  text-decoration-color: var(--color-red);
+  text-decoration-thickness: 1.5px;
+}
+
+/* citation pop-in */
+@keyframes ts-cite-pop {
+  0% { background-color: var(--color-red); color: var(--color-paper); }
+  100% { background-color: transparent; }
+}
+.ts-cite a {
+  color: var(--color-red);
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 0.72em;
+  padding: 0 1px;
+}
+.ts-cite a:hover {
+  text-decoration: underline;
+}
+.ts-cite-flash a {
+  animation: ts-cite-pop 0.7s ease-out;
+}
+
+/* blocks (figures/tables) compile in rather than type */
+.ts-compile {
+  opacity: 0;
+  transform: translateY(8px);
+}
+.ts-compile.is-set {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+/* red margin notes (reviewer voice) */
+.ts-margin-note {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--color-red);
+  opacity: 0;
+  transform: translateX(4px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.ts-margin-note.is-fired {
+  opacity: 1;
+  transform: none;
+}
+.ts-margin-note.is-resolved {
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+  opacity: 0.65;
+}
+
 /* Numbered figure/caption furniture */
 .fig-caption {
   font-family: var(--font-mono);

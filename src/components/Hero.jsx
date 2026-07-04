@@ -1,5 +1,8 @@
 import VolSurfaceFigure from "./VolSurfaceFigure";
-import Claim from "./Claim";
+import Equation from "./Equation";
+import Typed from "../typeset/Typed";
+import Compiled from "../typeset/Compiled";
+import { heroTitle, heroAbstract } from "../data/paper";
 
 export default function Hero() {
   return (
@@ -9,43 +12,35 @@ export default function Hero() {
           Working paper &middot; draft v0.4 &middot; not peer reviewed
         </p>
 
-        <h1 className="font-display text-4xl sm:text-6xl leading-[1.1] text-ink">
-          Statistics, optimisation, and the cost of being wrong at scale
-        </h1>
+        <Typed
+          order={10}
+          script={heroTitle}
+          as="h1"
+          className="font-display text-4xl sm:text-6xl leading-[1.1] text-ink min-h-[1.2em]"
+        />
 
-        <div className="font-mono text-sm text-ink-dim mt-6 space-y-1">
-          <p>Ollie Clark</p>
-          <p>MDatSci, Statistics &amp; Machine Learning &mdash; University of Warwick</p>
-          <p>ollie@orcus.co.uk</p>
-        </div>
+        <Compiled order={20}>
+          <div className="font-mono text-sm text-ink-dim mt-6 space-y-1">
+            <p>Ollie Clark</p>
+            <p>MDatSci, Statistics &amp; Machine Learning &mdash; University of Warwick</p>
+            <p>ollie@orcus.co.uk</p>
+          </div>
+        </Compiled>
 
         <div className="mt-10 grid sm:grid-cols-[auto_1fr] gap-x-3 gap-y-2 max-w-3xl">
           <p className="font-display italic text-ink-dim">Abstract.</p>
-          <p className="font-body text-ink leading-relaxed">
-            Data science student at Warwick specialising in quantitative
-            finance &mdash; the intersection of statistical rigour (GLMs,
-            mathematical finance) and modern ML (neural networks,
-            optimisation). Most recent work: a from-scratch trust-region
-            optimiser that sped up bias-reduced GLM fitting by up to{" "}
-            <Claim
-              evidence={
-                <>
-                  <p className="font-mono text-ink">31.65x&ndash;168.6x speedup</p>
-                  <p className="mt-1 text-ink-dim">
-                    across dense and sparse benchmark scenarios, coefficient
-                    agreement &lt;10&#8315;&#8310; vs. the original package,
-                    394/394 tests passing. See Fig. 2, &sect;2.1.
-                  </p>
-                </>
-              }
-            >
-              168x
-            </Claim>
-            .
-          </p>
+          <Typed
+            order={30}
+            script={heroAbstract}
+            as="p"
+            className="font-body text-ink leading-relaxed"
+          />
         </div>
 
-        <VolSurfaceFigure className="mt-14 h-56 sm:h-72" />
+        <Compiled order={40} className="mt-14">
+          <VolSurfaceFigure className="h-56 sm:h-72" />
+          <Equation className="mt-6" />
+        </Compiled>
       </div>
     </section>
   );

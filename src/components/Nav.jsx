@@ -1,7 +1,8 @@
 const links = [
-  { href: "#introduction", label: "§1 Introduction" },
+  { href: "#introduction", label: "§1 Intro" },
   { href: "#results", label: "§2 Results" },
-  { href: "#correspondence", label: "§3 Correspondence" },
+  { href: "#references", label: "§3 Refs" },
+  { href: "#correspondence", label: "§4 Contact" },
 ];
 
 export default function Nav() {
