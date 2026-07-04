@@ -119,6 +119,10 @@ export default function Projects() {
   return (
     <section id="results" className="border-t border-line">
       <div className="max-w-4xl mx-auto px-6 sm:px-10 py-20 sm:py-28 relative">
+        <SectionEyebrow n={2} title="Results" className="mb-4" />
+        <h2 className="font-display text-3xl sm:text-4xl text-ink mb-8">
+          Selected work
+        </h2>
         <PlateCluster
           numeral="II"
           caption="Conference season, loosely interpreted."
@@ -129,10 +133,6 @@ export default function Projects() {
             { src: trophy, alt: "The author and a friend at a formal dinner, trophy on the table" },
           ]}
         />
-        <SectionEyebrow n={2} title="Results" className="mb-4" />
-        <h2 className="font-display text-3xl sm:text-4xl text-ink mb-8">
-          Selected work
-        </h2>
         <div>
           {projects.map((p, i) => (
             <ProjectRow key={p.id} project={p} number={`2.${i + 1}`} />

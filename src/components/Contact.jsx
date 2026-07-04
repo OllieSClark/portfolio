@@ -15,16 +15,6 @@ export default function Contact() {
   return (
     <section id="correspondence" className="border-t border-line">
       <div className="max-w-4xl mx-auto px-6 sm:px-10 py-20 sm:py-28 relative">
-        <PlateCluster
-          numeral="III"
-          caption="The research group, annual meeting."
-          className="xl:top-20"
-          photos={[
-            { src: pair, alt: "The author and a friend at a summer ball" },
-            { src: ball, alt: "A large group in formalwear on stone steps" },
-            { src: trio, alt: "Three friends in evening dress on a lawn" },
-          ]}
-        />
         <SectionEyebrow n={4} title="Correspondence" className="mb-4" />
         <Typed
           order={150}
@@ -37,6 +27,17 @@ export default function Contact() {
           script={correspondenceBody}
           as="p"
           className="font-body text-ink/90 mt-6 max-w-xl leading-relaxed"
+        />
+
+        <PlateCluster
+          numeral="III"
+          caption="The research group, annual meeting."
+          className="xl:top-20"
+          photos={[
+            { src: pair, alt: "The author and a friend at a summer ball" },
+            { src: ball, alt: "A large group in formalwear on stone steps" },
+            { src: trio, alt: "Three friends in evening dress on a lawn" },
+          ]}
         />
 
         <Compiled order={160}>

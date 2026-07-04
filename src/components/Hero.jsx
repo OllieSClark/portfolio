@@ -13,16 +13,6 @@ export default function Hero() {
   return (
     <section id="top" className="pt-32 sm:pt-40 pb-20 border-b border-line">
       <div className="max-w-4xl mx-auto px-6 sm:px-10 relative">
-        <PlateCluster
-          numeral="I"
-          caption="Fieldwork, broadly defined."
-          className="xl:top-24"
-          photos={[
-            { src: kotor, alt: "The Bay of Kotor, Montenegro, from a waterside café" },
-            { src: hockey, alt: "A hockey stick on a blue pitch under a sunset" },
-            { src: coast, alt: "Friends on a seafront walk on the Welsh coast" },
-          ]}
-        />
         <div className="flex items-baseline justify-between gap-4 mb-6">
           <p className="font-mono text-xs uppercase tracking-[0.25em] text-red">
             Working paper &middot; draft v0.4 &middot; not peer reviewed
@@ -49,6 +39,17 @@ export default function Hero() {
             <p>ollie@orcus.co.uk</p>
           </div>
         </Compiled>
+
+        <PlateCluster
+          numeral="I"
+          caption="Fieldwork, broadly defined."
+          className="xl:top-24"
+          photos={[
+            { src: kotor, alt: "The Bay of Kotor, Montenegro, from a waterside café" },
+            { src: hockey, alt: "A hockey stick on a blue pitch under a sunset" },
+            { src: coast, alt: "Friends on a seafront walk on the Welsh coast" },
+          ]}
+        />
 
         <div className="mt-10 grid sm:grid-cols-[auto_1fr] gap-x-3 gap-y-2 max-w-3xl">
           <p className="font-display italic text-ink-dim">Abstract.</p>
