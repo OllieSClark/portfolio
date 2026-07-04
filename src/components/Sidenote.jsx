@@ -1,32 +1,42 @@
 import { useState } from "react";
 
 // Tufte-style static sidenote — ink-coloured (red stays "look here" only).
-// xl+: sits in the true right margin beside the anchor. Below xl: superscript
+// md+: floats right of the prose as a small note card. Below md: superscript
 // number toggles it inline.
 export default function Sidenote({ n, children }) {
   const [open, setOpen] = useState(false);
 
+  const body = (
+    <>
+      <span className="font-mono text-ink-dim mr-1">{n}.</span>
+      {children}
+    </>
+  );
+
   return (
-    <span className="relative">
+    <>
+      {/* md+: floated note (placed by CSS order, reads as a margin remark) */}
+      <span
+        className="hidden md:block md:float-right md:clear-right md:w-48 md:ml-5 md:mb-2
+          border-l border-line pl-3 text-xs font-body text-ink-dim leading-snug"
+      >
+        {body}
+      </span>
+      {/* below md: tap the number to expand inline */}
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="xl:pointer-events-none align-super text-[0.7em] font-mono text-ink-dim px-0.5"
+        className="md:hidden align-super text-[0.7em] font-mono text-ink-dim px-0.5"
         aria-label={`Sidenote ${n}`}
+        aria-expanded={open}
       >
         {n}
       </button>
-      <span
-        className={`
-          ${open ? "block" : "hidden"} my-2 rounded border border-line bg-surface p-3
-          text-sm font-body text-ink-dim leading-snug
-          xl:block xl:absolute xl:left-full xl:top-0 xl:ml-10 xl:w-52
-          xl:border-0 xl:bg-transparent xl:p-0 xl:text-xs
-        `}
-      >
-        <span className="font-mono text-ink-dim mr-1">{n}.</span>
-        {children}
-      </span>
-    </span>
+      {open && (
+        <span className="md:hidden block my-2 rounded border border-line bg-surface p-3 text-sm font-body text-ink-dim leading-snug">
+          {body}
+        </span>
+      )}
+    </>
   );
 }

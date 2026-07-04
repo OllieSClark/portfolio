@@ -171,3 +171,49 @@ button:focus-visible {
   color: var(--color-red);
   font-weight: 600;
 }
+
+/* ---- print: the portfolio typesets as an actual A4 working paper ---- */
+@media print {
+  :root {
+    --color-paper: #ffffff;
+    --color-surface: #ffffff;
+    --color-surface-2: #f4f4f4;
+    --color-ink: #111111;
+    --color-ink-dim: #555555;
+    --color-line: #cccccc;
+  }
+  body {
+    background: #ffffff;
+    color: #111111;
+  }
+  header,
+  .ts-caret,
+  .ts-margin-note {
+    display: none !important;
+  }
+  main {
+    padding-top: 0;
+  }
+  section > div {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+  }
+  #top {
+    padding-top: 1rem !important;
+  }
+  .ts-compile {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  figure,
+  table {
+    break-inside: avoid;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  .ts-cite a {
+    color: #111111;
+  }
+}

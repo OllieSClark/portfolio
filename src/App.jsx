@@ -8,6 +8,9 @@ import Contact from "./components/Contact";
 import MarginRail from "./components/MarginRail";
 import CompileFooter from "./components/CompileFooter";
 import SkipTypesetting from "./components/SkipTypesetting";
+import PageNumber from "./components/PageNumber";
+import CompileLog from "./components/CompileLog";
+import PaperBehaviours from "./components/PaperBehaviours";
 import { AnnotationProvider } from "./components/AnnotationContext";
 import { TypesetProvider } from "./typeset/TypesetContext";
 
@@ -28,6 +31,9 @@ export default function App() {
           <CompileFooter />
           <MarginRail />
           <SkipTypesetting />
+          <PageNumber />
+          <CompileLog />
+          <PaperBehaviours />
         </div>
       </AnnotationProvider>
     </TypesetProvider>

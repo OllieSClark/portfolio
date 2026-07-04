@@ -30,18 +30,18 @@ function ProjectRow({ project, number }) {
               needs evidence — R2
             </RedMarginNote>
           )}
-          <Typed
-            order={ORDERS[project.id]}
-            script={projectScripts[project.id]}
-            as="p"
-            className="font-body text-ink/90 mt-3 max-w-2xl leading-relaxed"
-          />
           {project.id === "diss" && (
             <Sidenote n={2}>
               Starts July 2026 &mdash; a plan, not results. This entry gets
               rewritten from actual status as the year progresses.
             </Sidenote>
           )}
+          <Typed
+            order={ORDERS[project.id]}
+            script={projectScripts[project.id]}
+            as="p"
+            className="font-body text-ink/90 mt-3 max-w-2xl leading-relaxed"
+          />
           <div className="flex flex-wrap gap-x-4 gap-y-2 mt-5">
             {project.meta.map((m) => (
               <span

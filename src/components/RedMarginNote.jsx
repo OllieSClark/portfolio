@@ -9,16 +9,16 @@ export default function RedMarginNote({ fireId, resolveId, children }) {
   const resolveFired = useMarkFired(resolveId ?? "__none__");
   const resolved = resolveId ? resolveFired : false;
 
+  // NOTE: no `relative` here — the absolute note anchors to the project
+  // row's positioned column so it lands in the true right margin on xl.
   return (
-    <span className="relative block xl:inline">
-      <span
-        className={`ts-margin-note ${fired ? "is-fired" : ""} ${resolved ? "is-resolved" : ""}
-          block my-2 xl:absolute xl:left-full xl:top-0 xl:ml-10 xl:w-52 xl:my-0`}
-        aria-hidden={!fired}
-      >
-        {children}
-        {resolved && <span className="ml-1 no-underline">✓</span>}
-      </span>
+    <span
+      className={`ts-margin-note ${fired ? "is-fired" : ""} ${resolved ? "is-resolved" : ""}
+        block my-2 xl:absolute xl:left-full xl:top-0 xl:ml-8 xl:w-48 xl:my-0`}
+      aria-hidden={!fired}
+    >
+      {children}
+      {resolved && <span className="ml-1 no-underline">✓</span>}
     </span>
   );
 }

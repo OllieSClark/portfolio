@@ -1,5 +1,6 @@
 import VolSurfaceFigure from "./VolSurfaceFigure";
 import Equation from "./Equation";
+import CiteButton from "./CiteButton";
 import Typed from "../typeset/Typed";
 import Compiled from "../typeset/Compiled";
 import { heroTitle, heroAbstract } from "../data/paper";
@@ -8,9 +9,12 @@ export default function Hero() {
   return (
     <section id="top" className="pt-32 sm:pt-40 pb-20 border-b border-line">
       <div className="max-w-4xl mx-auto px-6 sm:px-10">
-        <p className="font-mono text-xs uppercase tracking-[0.25em] text-red mb-6">
-          Working paper &middot; draft v0.4 &middot; not peer reviewed
-        </p>
+        <div className="flex items-baseline justify-between gap-4 mb-6">
+          <p className="font-mono text-xs uppercase tracking-[0.25em] text-red">
+            Working paper &middot; draft v0.4 &middot; not peer reviewed
+          </p>
+          <CiteButton />
+        </div>
 
         <Typed
           order={10}

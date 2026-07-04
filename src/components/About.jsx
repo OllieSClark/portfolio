@@ -20,18 +20,18 @@ export default function About() {
         </p>
         <div className="grid sm:grid-cols-[2fr_1fr] gap-12">
           <div className="relative">
-            <Typed
-              order={50}
-              script={introduction}
-              as="p"
-              className="font-display text-xl sm:text-2xl leading-snug text-ink"
-            />
             <Sidenote n={1}>
               The original plan was gradient methods (Adam, L-BFGS); the pivot
               to trust region came mid-project, when gradient methods turned
               out not to exploit the adjusted-score structure &mdash; a
               documented, examiner-praised judgement call.
             </Sidenote>
+            <Typed
+              order={50}
+              script={introduction}
+              as="p"
+              className="font-display text-xl sm:text-2xl leading-snug text-ink"
+            />
           </div>
           <Compiled order={60}>
             <div className="font-mono text-sm text-ink-dim space-y-3 border-l border-line pl-6">
