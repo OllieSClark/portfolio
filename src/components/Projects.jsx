@@ -27,7 +27,7 @@ function ProjectRow({ project, number }) {
           <p className="font-mono text-[11px] uppercase tracking-widest text-red mb-2">
             {project.tag}
           </p>
-          <h3 className="font-display text-xl sm:text-2xl text-ink">
+          <h3 className="font-display text-fluid-sm text-ink">
             {project.title}
           </h3>
           {project.id === "brglm2" && (
@@ -120,17 +120,17 @@ export default function Projects() {
     <section id="results" className="border-t border-line">
       <div className="max-w-4xl mx-auto px-6 sm:px-10 py-20 sm:py-28 relative">
         <SectionEyebrow n={2} title="Results" className="mb-4" />
-        <h2 className="font-display text-3xl sm:text-4xl text-ink mb-8">
+        <h2 className="font-display text-fluid-md text-ink mb-8">
           Selected work
         </h2>
         <PlateCluster
           numeral="II"
           caption="Conference season, loosely interpreted."
-          className="xl:top-40"
+          className="plates:top-40"
           photos={[
-            { src: golf, alt: "Two friends on a golf course in autumn" },
-            { src: stairs, alt: "Friends in black tie on a staircase lined with framed portraits" },
-            { src: trophy, alt: "The author and a friend at a formal dinner, trophy on the table" },
+            { src: golf, alt: "Two friends on a golf course in autumn", width: 480, height: 720 },
+            { src: stairs, alt: "Friends in black tie on a staircase lined with framed portraits", width: 480, height: 720 },
+            { src: trophy, alt: "The author and a friend at a formal dinner, trophy on the table", width: 720, height: 480 },
           ]}
         />
         <div>

@@ -19,6 +19,23 @@
   --font-display: "CMU Serif", "Latin Modern Roman", Georgia, serif;
   --font-body: "STIX Two Text", "Georgia", serif;
   --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  /* Margin-plate breakpoints: the point where the viewport margin outside the
+     max-w-4xl (896px) column is wide enough to hold the side gallery without
+     clipping. Sized with headroom over the raw fit (unlike Tailwind's default
+     xl/2xl, which land exactly flush with the plate's footprint and clip at
+     the boundary once a scrollbar or rounding eats into the viewport). */
+  --breakpoint-plates: 85rem; /* 1360px: margin 232px vs. 192px needed (w-40 + mr-8) */
+  --breakpoint-plates-lg: 100rem; /* 1600px: margin 352px vs. 304px needed (w-60 + mr-16) */
+
+  /* Fluid headline sizes: scale continuously with viewport width between the
+     old mobile/sm:desktop values, instead of snapping at the 640px sm
+     breakpoint. Each ramps between the two reference widths below; text-*
+     tokens still name the sm-breakpoint end so call sites read like the
+     Tailwind scale they replace. */
+  --text-fluid-lg: clamp(2.25rem, 1.6rem + 2.7vw, 3.75rem); /* text-4xl -> text-6xl */
+  --text-fluid-md: clamp(1.875rem, 1.7rem + 0.68vw, 2.25rem); /* text-3xl -> text-4xl */
+  --text-fluid-sm: clamp(1.25rem, 1.14rem + 0.45vw, 1.5rem); /* text-xl -> text-2xl */
 }
 
 html {

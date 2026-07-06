@@ -20,7 +20,7 @@ export default function Contact() {
           order={150}
           script={correspondenceHead}
           as="h2"
-          className="font-display text-3xl sm:text-4xl text-ink max-w-2xl leading-tight"
+          className="font-display text-fluid-md text-ink max-w-2xl leading-tight"
         />
         <Typed
           order={155}
@@ -32,11 +32,11 @@ export default function Contact() {
         <PlateCluster
           numeral="III"
           caption="The research group, annual meeting."
-          className="xl:top-20"
+          className="plates:top-20"
           photos={[
-            { src: pair, alt: "The author and a friend at a summer ball" },
-            { src: ball, alt: "A large group in formalwear on stone steps" },
-            { src: trio, alt: "Three friends in evening dress on a lawn" },
+            { src: pair, alt: "The author and a friend at a summer ball", width: 720, height: 480 },
+            { src: ball, alt: "A large group in formalwear on stone steps", width: 720, height: 480 },
+            { src: trio, alt: "Three friends in evening dress on a lawn", width: 720, height: 480 },
           ]}
         />
 

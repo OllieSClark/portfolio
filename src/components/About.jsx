@@ -33,7 +33,7 @@ export default function About() {
               order={50}
               script={introduction}
               as="p"
-              className="font-display text-xl sm:text-2xl leading-snug text-ink"
+              className="font-display text-fluid-sm leading-snug text-ink"
             />
           </div>
           <Compiled order={60}>

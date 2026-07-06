@@ -28,7 +28,7 @@ export default function Hero() {
             order={10}
             script={heroTitle}
             as="h1"
-            className="font-display text-4xl sm:text-6xl leading-[1.1] text-ink min-h-[1.2em]"
+            className="font-display text-fluid-lg leading-[1.1] text-ink min-h-[1.2em]"
           />
         </div>
 
@@ -43,11 +43,11 @@ export default function Hero() {
         <PlateCluster
           numeral="I"
           caption="Fieldwork, broadly defined."
-          className="xl:top-24"
+          className="plates:top-24"
           photos={[
-            { src: kotor, alt: "The Bay of Kotor, Montenegro, from a waterside café" },
-            { src: hockey, alt: "A hockey stick on a blue pitch under a sunset" },
-            { src: coast, alt: "Friends on a seafront walk on the Welsh coast" },
+            { src: kotor, alt: "The Bay of Kotor, Montenegro, from a waterside café", width: 720, height: 541 },
+            { src: hockey, alt: "A hockey stick on a blue pitch under a sunset", width: 541, height: 720 },
+            { src: coast, alt: "Friends on a seafront walk on the Welsh coast", width: 720, height: 540 },
           ]}
         />
 
