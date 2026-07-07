@@ -5,7 +5,8 @@ import { useTypeset } from "./TypesetContext";
 // short settle when its turn in the document order arrives. Optionally fires
 // marks (e.g. resolving a reviewer comment) when it lands.
 export default function Compiled({ order, marks = [], children, className = "" }) {
-  const { register, setReady, setVisibility, notifyDone, fireMark } = useTypeset();
+  const { register, setReady, setVisibility, notifyDone, fireMark, speedRef } =
+    useTypeset();
   const [visible, setVisible] = useState(false);
   const elRef = useRef(null);
 
@@ -17,7 +18,8 @@ export default function Compiled({ order, marks = [], children, className = "" }
     const unregister = register(order, {
       play: () => {
         land();
-        setTimeout(() => notifyDone(order), 480);
+        // settle time follows the reader's pace like typed regions do
+        setTimeout(() => notifyDone(order), 480 / speedRef.current);
       },
       finishNow: land,
     });

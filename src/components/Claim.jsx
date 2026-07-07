@@ -1,8 +1,10 @@
 import { useId, useState } from "react";
 import { useAnnotation } from "./AnnotationContext";
 
-// A claim in running text ("168.6x speedup") that reveals its evidence
-// in the margin rail on hover/focus, and inline on mobile via tap.
+// A claim in running text ("168.6x speedup") that reveals its evidence in
+// the margin rail on hover/focus (plates-lg+, where the rail fits), and
+// inline via tap everywhere narrower — matching MarginRail's breakpoint so
+// there is no width where a claim answers with nothing.
 export default function Claim({ children, evidence }) {
   const id = useId();
   const { setActive } = useAnnotation();
@@ -26,7 +28,7 @@ export default function Claim({ children, evidence }) {
         {children}
       </span>
       {mobileOpen && (
-        <span className="mt-2 block lg:hidden rounded border border-line bg-surface-2 p-3 text-sm">
+        <span className="mt-2 block plates-lg:hidden rounded border border-line bg-surface-2 p-3 text-sm">
           {evidence}
         </span>
       )}

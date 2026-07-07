@@ -5,14 +5,16 @@ import Claim from "../components/Claim";
 // labels, project titles/meta) stays in the components — the conceit is that
 // the outline exists and the prose is being written into it.
 
+// spans, not <p>: this JSX also renders inline inside typed paragraphs (the
+// Claim tap-fallback), and a <p> inside a <p> is invalid HTML
 const speedupEvidence = (
   <>
-    <p className="font-mono text-ink">31.65x&ndash;168.6x speedup</p>
-    <p className="mt-1 text-ink-dim">
+    <span className="block font-mono text-ink">31.65x&ndash;168.6x speedup</span>
+    <span className="block mt-1 text-ink-dim">
       across dense and sparse benchmark scenarios, coefficient agreement
       &lt;10&#8315;&#8310; vs. the original package, 394/394 tests passing. See
       Fig. 2 and Table 1, &sect;2.1.
-    </p>
+    </span>
   </>
 );
 

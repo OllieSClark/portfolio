@@ -49,14 +49,16 @@ export function scriptMarkIds(script) {
 }
 
 // Runs a script. Returns { start, finishNow, cancel }.
-export function createRun(script, { onState, onMark, onDone, cps = 55 }) {
+// `speed` is sampled at every keystroke, so the scheduler can change the
+// pace of a run already in flight (reader scrolling ahead → hurry).
+export function createRun(script, { onState, onMark, onDone, cps = 55, speed = () => 1 }) {
   let segments = [];
   let timer = null;
   let finished = false;
 
   const report = () => onState([...segments]);
   const later = (fn, ms) => {
-    timer = setTimeout(fn, ms);
+    timer = setTimeout(fn, ms / speed());
   };
 
   function typeInto(target, text, i, cpsHere, then) {
