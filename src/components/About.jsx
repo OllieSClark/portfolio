@@ -15,7 +15,7 @@ const keywords = [
   "Statistical computing (R, Python)",
 ];
 
-const stack = ["Python", "R", "PyTorch", "NumPy / pandas", "LaTeX", "Git"];
+const stack = ["Python", "R", "PyTorch", "NumPy / pandas", "Java", "Spring", "LaTeX", "Git"];
 
 const y3Evidence = (
   <>
@@ -114,51 +114,21 @@ export default function About() {
         <Compiled order={65} className="mt-14">
           <div className="max-w-2xl">
             <p className="font-body text-ink/90 leading-relaxed">
-              Three years into the MDatSci, most recent first:
-            </p>
-            <div className="mt-3 space-y-3">
-              <div className="flex gap-3">
-                <span className="font-mono text-red shrink-0">&mdash;</span>
-                <p className="font-body text-ink/90 leading-relaxed">
-                  <span className="font-mono text-xs uppercase tracking-wider text-ink-dim mr-1">
-                    Year 3
-                  </span>{" "}
-                  <Claim evidence={y3Evidence}>78.5% (First)</Claim> — anchored
-                  by{" "}
-                  <Claim evidence={prizeEvidence}>
-                    the Data Science Project (89, Best Data Science
-                    Third-Year Prize, Dept. of Computer Science)
-                  </Claim>
-                  .
-                </p>
-              </div>
-              <div className="flex gap-3">
-                <span className="font-mono text-red shrink-0">&mdash;</span>
-                <p className="font-body text-ink/90 leading-relaxed">
-                  <span className="font-mono text-xs uppercase tracking-wider text-ink-dim mr-1">
-                    Year 2
-                  </span>{" "}
-                  <Claim evidence={y2Evidence}>70.7%</Claim>, the softest
-                  year, though Stochastic Processes&rsquo; 81 pointed straight
-                  at the diffusion-model dissertation to come.
-                </p>
-              </div>
-              <div className="flex gap-3">
-                <span className="font-mono text-red shrink-0">&mdash;</span>
-                <p className="font-body text-ink/90 leading-relaxed">
-                  <span className="font-mono text-xs uppercase tracking-wider text-ink-dim mr-1">
-                    Year 1
-                  </span>{" "}
-                  <Claim evidence={y1Evidence}>76.3% (First)</Claim>, opened
-                  by a 96 in Mathematical Programming — still the highest
-                  mark on record.
-                </p>
-              </div>
-            </div>
-            <p className="mt-4 font-body text-ink/90 leading-relaxed">
-              Warwick-weighted average across the three years so far:{" "}
-              <Claim evidence={avgEvidence}>75.5%</Claim>; the dissertation
-              year (40% of the classification) is what&rsquo;s left to write.
+              Three years into the MDatSci, most recent first. Year 3:{" "}
+              <Claim evidence={y3Evidence}>78.5% (First)</Claim> — anchored by{" "}
+              <Claim evidence={prizeEvidence}>
+                the Data Science Project (89, Best Data Science Third-Year
+                Prize, Dept. of Computer Science)
+              </Claim>
+              . Year 2: <Claim evidence={y2Evidence}>70.7%</Claim>, the
+              softest year, though Stochastic Processes&rsquo; 81 pointed
+              straight at the diffusion-model dissertation to come. Year 1:{" "}
+              <Claim evidence={y1Evidence}>76.3% (First)</Claim>, opened by a
+              96 in Mathematical Programming — still the highest mark on
+              record. Warwick-weighted average across the three years so
+              far: <Claim evidence={avgEvidence}>75.5%</Claim>; the
+              dissertation year (40% of the classification) is what&rsquo;s
+              left to write.
             </p>
           </div>
           <AcademicTable className="mt-8 max-w-2xl" />
