@@ -19,7 +19,7 @@ const speedupEvidence = (
 );
 
 export const heroTitle = [
-  t("The cost of being wrong, at scale", { cps: 34 }),
+  t("Evidence, not assertion", { cps: 34 }),
   mark("hero-title-done"),
 ];
 
