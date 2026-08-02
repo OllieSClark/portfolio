@@ -28,7 +28,10 @@ export default function Claim({ children, evidence }) {
         {children}
       </span>
       {mobileOpen && (
-        <span className="mt-2 block plates-lg:hidden rounded border border-line bg-surface-2 p-3 text-sm">
+        <span
+          className="absolute left-0 top-full z-30 mt-2 block w-72 max-w-[80vw] plates-lg:hidden
+            rounded border border-line bg-surface-2 p-3 text-sm shadow-md"
+        >
           {evidence}
         </span>
       )}
