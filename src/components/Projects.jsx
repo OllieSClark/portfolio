@@ -15,6 +15,13 @@ import trophy from "../assets/plates/trophy.jpg";
 // Document-order slots for the typed regions in §2 (spaced for insertion).
 const ORDERS = { brglm2: 80, bny: 100, wq: 110, diss: 120 };
 
+// brglm2 is the one proven, quantified result — it gets the full row, the
+// benchmark figure, the table. Everything else (in progress, or not yet
+// started) is honest about that in its own copy, so it shouldn't share the
+// same visual weight: it reads as a compact "current & upcoming" strip.
+const featured = projects.find((p) => p.id === "brglm2");
+const current = projects.filter((p) => p.id !== "brglm2");
+
 function ProjectRow({ project, number }) {
   return (
     <div className="py-10 border-t border-line first:border-t-0">
@@ -30,29 +37,9 @@ function ProjectRow({ project, number }) {
           <h3 className="font-display text-fluid-sm text-ink">
             {project.title}
           </h3>
-          {project.id === "brglm2" && (
-            <RedMarginNote fireId="r2" resolveId="r2-resolved">
-              needs evidence (R2)
-            </RedMarginNote>
-          )}
-          {project.id === "bny" && (
-            <Sidenote n={3}>
-              Present tense is deliberate. What an intern may publish is a
-              negotiation that concludes in mid-August; the write-up follows
-              the lawyers.
-            </Sidenote>
-          )}
-          {project.id === "wq" && (
-            <RedMarginNote fireId="wq-note">
-              cite? or does the trophy count
-            </RedMarginNote>
-          )}
-          {project.id === "diss" && (
-            <Sidenote n={4}>
-              Starts July 2026. A plan, not results. This entry gets
-              rewritten from actual status as the year progresses.
-            </Sidenote>
-          )}
+          <RedMarginNote fireId="r2" resolveId="r2-resolved">
+            needs evidence (R2)
+          </RedMarginNote>
           <Typed
             order={ORDERS[project.id]}
             script={projectScripts[project.id]}
@@ -115,6 +102,60 @@ function ProjectRow({ project, number }) {
   );
 }
 
+// The compact companions to the annotation attached to each row below —
+// kept here rather than inline so CompactProjectRow stays a plain map.
+const NOTES = {
+  bny: (
+    <Sidenote n={3}>
+      Present tense is deliberate. What an intern may publish is a
+      negotiation that concludes in mid-August; the write-up follows the
+      lawyers.
+    </Sidenote>
+  ),
+  wq: (
+    <RedMarginNote fireId="wq-note">cite? or does the trophy count</RedMarginNote>
+  ),
+  diss: (
+    <Sidenote n={4}>
+      Starts July 2026. A plan, not results. This entry gets rewritten from
+      actual status as the year progresses.
+    </Sidenote>
+  ),
+};
+
+function CompactProjectRow({ project }) {
+  return (
+    <div className="relative py-5 border-t border-line first:border-t-0">
+      {NOTES[project.id]}
+      <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+        <h4 className="font-display text-base text-ink">{project.title}</h4>
+        <span className="font-mono text-[10px] uppercase tracking-wider text-ink-dim shrink-0">
+          {project.period}
+        </span>
+      </div>
+      <p className="font-mono text-[11px] uppercase tracking-widest text-red mt-1">
+        {project.tag}
+      </p>
+      <Typed
+        order={ORDERS[project.id]}
+        script={projectScripts[project.id]}
+        as="p"
+        className="font-body text-sm text-ink/80 mt-2 max-w-2xl leading-snug"
+      />
+      <div className="flex flex-wrap gap-x-3 gap-y-1 mt-2">
+        {project.meta.map((m) => (
+          <span
+            key={m}
+            className="font-mono text-[10px] uppercase tracking-wider text-ink-dim/70"
+          >
+            {m}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function Projects() {
   return (
     <section id="results" className="border-t border-line">
@@ -134,9 +175,18 @@ export default function Projects() {
           ]}
         />
         <div>
-          {projects.map((p, i) => (
-            <ProjectRow key={p.id} project={p} number={`2.${i + 1}`} />
-          ))}
+          <ProjectRow project={featured} number="2.1" />
+        </div>
+
+        <div className="mt-12">
+          <p className="font-mono text-xs text-ink-dim uppercase tracking-wider mb-1">
+            2.2 &middot; Current &amp; upcoming
+          </p>
+          <div>
+            {current.map((p) => (
+              <CompactProjectRow key={p.id} project={p} />
+            ))}
+          </div>
         </div>
       </div>
     </section>

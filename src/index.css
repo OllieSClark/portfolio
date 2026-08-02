@@ -82,7 +82,9 @@ button:focus-visible {
   transform: translateY(0);
 }
 
-/* Reviewer's-pen claim underline — the site's one recurring "look here" mark */
+/* Hoverable claim — dotted, not wavy, so it reads as "more info available"
+   (the conventional tooltip/glossary cue) rather than as one of the site's
+   wavy redline/typo marks, which it would otherwise be confused with. */
 .claim {
   position: relative;
   cursor: help;
@@ -90,7 +92,7 @@ button:focus-visible {
   text-decoration-color: var(--color-red);
   text-decoration-thickness: 1.5px;
   text-underline-offset: 3px;
-  text-decoration-style: wavy;
+  text-decoration-style: dotted;
   text-decoration-skip-ink: none;
 }
 

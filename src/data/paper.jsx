@@ -13,7 +13,7 @@ const speedupEvidence = (
     <span className="block mt-1 text-ink-dim">
       across dense and sparse benchmark scenarios, coefficient agreement
       &lt;10&#8315;&#8310; vs. the original package, 394/394 tests passing. See
-      Fig. 2 and Table 1, &sect;2.1.
+      Fig. 2 and Table 2, &sect;2.1.
     </span>
   </>
 );
@@ -40,7 +40,7 @@ export const heroAbstract = [
 export const introduction = [
   mark("sec-intro"),
   t(
-    "I work at the point where statistics and ML overlap in quant finance: GLMs give valid, interpretable inference; ML models predict better when the true relationship is too complex for a closed form. The brglm2 project (§2.1) sits exactly there: a classical statistical method, bias-reduced GLM estimation, made practical at scale through modern numerical optimisation.",
+    "A trust-region fitting engine for brglm2 — the standard R package for bias-reduced GLM estimation — cuts fit time 31.65×–168.6× over the original Fisher-scoring routine, with coefficient agreement <10⁻⁶ and the existing 394-test suite green (§2.1). It sits where statistics and ML overlap in quant finance: GLMs give valid, interpretable inference; ML predicts better when the true relationship resists a closed form.",
     { cps: 100 }
   ),
   mark("intro-done"),

@@ -1,4 +1,5 @@
 import { useMarkFired } from "../typeset/TypesetContext";
+import ReadingProgress from "./ReadingProgress";
 
 // The outline builds itself: each section's nav entry appears the moment its
 // prose starts being written (a mark at the head of the section's first
@@ -31,6 +32,7 @@ function NavLink({ href, label, markId }) {
 export default function Nav() {
   return (
     <header className="fixed top-0 inset-x-0 z-40 backdrop-blur-sm bg-paper/85 border-b border-line">
+      <ReadingProgress />
       <div className="max-w-4xl mx-auto px-6 sm:px-10 h-14 flex items-center justify-between">
         <a
           href="#top"

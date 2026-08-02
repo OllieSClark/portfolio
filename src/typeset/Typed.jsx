@@ -12,14 +12,28 @@ function Citation({ n, flash }) {
   );
 }
 
+// A struck segment's text sometimes carries a leading/trailing space (kept
+// there so the surrounding prose reads naturally when concatenated) — but
+// drawing the strikethrough across that space renders as a stray floating
+// tick beside the word. Keep the line-through to the visible word only.
+function renderStrike(s) {
+  const text = s.text;
+  const lead = text.match(/^\s*/)[0];
+  const trail = lead.length < text.length ? text.slice(lead.length).match(/\s*$/)[0] : "";
+  const core = text.slice(lead.length, text.length - trail.length);
+  return (
+    <span key={s.id}>
+      {lead}
+      <span className={`ts-strike ${s.struck ? "is-struck" : ""}`}>{core}</span>
+      {trail}
+    </span>
+  );
+}
+
 function renderSegment(s) {
   if (s.kind === "cite") return <Citation key={s.id} n={s.n} flash={s.flash} />;
-  const cls =
-    s.kind === "typo"
-      ? "ts-typo"
-      : s.kind === "strike"
-        ? `ts-strike ${s.struck ? "is-struck" : ""}`
-        : undefined;
+  if (s.kind === "strike") return renderStrike(s);
+  const cls = s.kind === "typo" ? "ts-typo" : undefined;
   const inner = (
     <span key={s.id} className={cls}>
       {s.text}

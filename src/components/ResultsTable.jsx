@@ -1,4 +1,4 @@
-// Table 1 — only the published benchmark facts; nothing invented.
+// Table 2 — only the published benchmark facts; nothing invented.
 const rows = [
   ["Dense scenarios", "1.00x (baseline)", "31.65x"],
   ["Sparse scenarios", "1.00x (baseline)", "168.6x"],
@@ -36,7 +36,7 @@ export default function ResultsTable({ className = "" }) {
         </table>
       </div>
       <figcaption className="fig-caption mt-2">
-        <span className="fig-number">Table 1.</span> Fit-time speedup of the
+        <span className="fig-number">Table 2.</span> Fit-time speedup of the
         trust-region engine over brglm2's quasi-Fisher scoring, dense and sparse
         benchmark scenarios.
       </figcaption>
