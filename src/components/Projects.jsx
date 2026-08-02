@@ -40,6 +40,12 @@ function ProjectRow({ project, number }) {
           <RedMarginNote fireId="r2" resolveId="r2-resolved">
             needs evidence (R2)
           </RedMarginNote>
+          <Sidenote n={1}>
+            The original plan was gradient methods (Adam, L-BFGS); the pivot
+            to trust region came mid-project, when gradient methods turned
+            out not to exploit the adjusted-score structure, a documented,
+            examiner-praised judgement call.
+          </Sidenote>
           <Typed
             order={ORDERS[project.id]}
             script={projectScripts[project.id]}

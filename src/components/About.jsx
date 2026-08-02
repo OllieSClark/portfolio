@@ -1,6 +1,5 @@
 import Typed from "../typeset/Typed";
 import Compiled from "../typeset/Compiled";
-import Sidenote from "./Sidenote";
 import RedMarginNote from "./RedMarginNote";
 import SectionEyebrow from "./SectionEyebrow";
 import Claim from "./Claim";
@@ -82,12 +81,6 @@ export default function About() {
             <RedMarginNote fireId="intro-done" side="left">
               tighten this (v0.5)
             </RedMarginNote>
-            <Sidenote n={1}>
-              The original plan was gradient methods (Adam, L-BFGS); the pivot
-              to trust region came mid-project, when gradient methods turned
-              out not to exploit the adjusted-score structure, a documented,
-              examiner-praised judgement call.
-            </Sidenote>
             <Typed
               order={50}
               script={introduction}
