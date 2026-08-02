@@ -19,7 +19,7 @@ const speedupEvidence = (
 );
 
 export const heroTitle = [
-  t("Statistics, optimisation, and the cost of being wrong at scale", { cps: 34 }),
+  t("The cost of being wrong, at scale", { cps: 34 }),
   mark("hero-title-done"),
 ];
 
@@ -40,7 +40,7 @@ export const heroAbstract = [
 export const introduction = [
   mark("sec-intro"),
   t(
-    "A trust-region fitting engine for brglm2 — the standard R package for bias-reduced GLM estimation — cuts fit time 31.65×–168.6× over the original Fisher-scoring routine, with coefficient agreement <10⁻⁶ and the existing 394-test suite green (§2.1). It sits where statistics and ML overlap in quant finance: GLMs give valid, interpretable inference; ML predicts better when the true relationship resists a closed form.",
+    "MDatSci (Data Science) student at Warwick, three years into a degree built around exactly the join between statistics and machine learning: probability and mathematical statistics, then modern ML, neural computing, and mathematical finance. I'm drawn to the problems that sit in that overlap — GLMs give valid, interpretable inference; ML predicts better when the true relationship won't fit a closed form; quantitative finance runs on both.",
     { cps: 100 }
   ),
   mark("intro-done"),
@@ -50,7 +50,7 @@ export const projectScripts = {
   brglm2: [
     mark("sec-results"),
     t(
-      "Forked brglm2 (the standard R package for bias-reduction in GLMs) and replaced its default quasi-Fisher scoring fit routine with a trust-region framework built from scratch: a CG-Steihaug subproblem solver",
+      "GLMs give valid, interpretable inference — the tradeoff is a fitting routine that doesn't scale. Forked brglm2 (the standard R package for bias-reduction in GLMs) and replaced its default quasi-Fisher scoring fit routine with a trust-region framework built from scratch: a CG-Steihaug subproblem solver",
       { cps: 130 }
     ),
     cite(2),

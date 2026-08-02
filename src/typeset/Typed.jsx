@@ -12,15 +12,20 @@ function Citation({ n, flash }) {
   );
 }
 
-// A struck segment's text sometimes carries a leading/trailing space (kept
-// there so the surrounding prose reads naturally when concatenated) — but
-// drawing the strikethrough across that space renders as a stray floating
-// tick beside the word. Keep the line-through to the visible word only.
-function renderStrike(s) {
-  const text = s.text;
+// Segment text sometimes carries a leading/trailing space (kept there so the
+// surrounding prose reads naturally when concatenated) — but a decoration
+// (strikethrough, or a Claim's dotted underline) drawn across that space
+// renders as a stray floating mark beside the word. Split it out so any
+// per-segment decoration only ever touches the visible text.
+function splitWhitespace(text) {
   const lead = text.match(/^\s*/)[0];
   const trail = lead.length < text.length ? text.slice(lead.length).match(/\s*$/)[0] : "";
   const core = text.slice(lead.length, text.length - trail.length);
+  return [lead, core, trail];
+}
+
+function renderStrike(s) {
+  const [lead, core, trail] = splitWhitespace(s.text);
   return (
     <span key={s.id}>
       {lead}
@@ -33,13 +38,24 @@ function renderStrike(s) {
 function renderSegment(s) {
   if (s.kind === "cite") return <Citation key={s.id} n={s.n} flash={s.flash} />;
   if (s.kind === "strike") return renderStrike(s);
+
+  if (s.wrap) {
+    const [lead, core, trail] = splitWhitespace(s.text);
+    return (
+      <span key={s.id}>
+        {lead}
+        {s.wrap(<span>{core}</span>)}
+        {trail}
+      </span>
+    );
+  }
+
   const cls = s.kind === "typo" ? "ts-typo" : undefined;
-  const inner = (
+  return (
     <span key={s.id} className={cls}>
       {s.text}
     </span>
   );
-  return s.wrap ? <span key={s.id}>{s.wrap(inner)}</span> : inner;
 }
 
 // A typed prose region. `order` is its global document-order slot; the

@@ -113,7 +113,7 @@ const NOTES = {
     </Sidenote>
   ),
   wq: (
-    <RedMarginNote fireId="wq-note">cite? or does the trophy count</RedMarginNote>
+    <RedMarginNote fireId="wq-note">cite? or does the certificate count</RedMarginNote>
   ),
   diss: (
     <Sidenote n={4}>
