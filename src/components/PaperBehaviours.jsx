@@ -23,7 +23,7 @@ export default function PaperBehaviours() {
       if (node && node.nodeType === Node.TEXT_NODE) node = node.parentElement;
       const section = node?.closest?.("section")?.id;
       const label = SECTION_LABELS[section];
-      const source = `— Clark (2026), working paper${label ? `, ${label}` : ""}`;
+      const source = `— Clark (2026), a working paper${label ? `, ${label}` : ""}`;
       e.clipboardData.setData("text/plain", `${text}\n\n${source}`);
       e.preventDefault();
     };

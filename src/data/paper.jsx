@@ -70,6 +70,7 @@ export const projectScripts = {
     ),
   ],
   wq: [
+    mark("sec-wq"),
     t(
       "Designed and backtested alpha signals on WorldQuant's BRAIN platform",
       { cps: 120 }

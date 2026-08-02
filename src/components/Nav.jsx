@@ -38,7 +38,7 @@ export default function Nav() {
           href="#top"
           className="font-mono text-xs tracking-tight text-ink-dim hover:text-red transition-colors"
         >
-          Clark (2026), working paper
+          Clark (2026), a working paper
         </a>
         <nav className="hidden sm:flex items-center gap-6">
           {links.map((l) => (

@@ -5,6 +5,7 @@ import RedMarginNote from "./RedMarginNote";
 import Sidenote from "./Sidenote";
 import SectionEyebrow from "./SectionEyebrow";
 import SectionDivider from "./SectionDivider";
+import MarkReveal from "./MarkReveal";
 import PlateCluster from "./PlateCluster";
 import Typed from "../typeset/Typed";
 import Compiled from "../typeset/Compiled";
@@ -15,6 +16,10 @@ import trophy from "../assets/plates/trophy.jpg";
 
 // Document-order slots for the typed regions in §2 (spaced for insertion).
 const ORDERS = { brglm2: 80, bny: 100, wq: 110, diss: 120 };
+// Each project's own opening mark — gates its static header furniture (title,
+// date, tag, links) so it appears alongside the typing rather than sitting
+// there pre-rendered from load.
+const MARKS = { brglm2: "sec-results", bny: "sec-bny", wq: "sec-wq", diss: "sec-diss" };
 
 // brglm2 is the one proven, quantified result — it gets the full row, the
 // benchmark figure, the table. Everything else (in progress, or not yet
@@ -26,7 +31,7 @@ const current = projects.filter((p) => p.id !== "brglm2");
 function ProjectRow({ project, number }) {
   return (
     <div className="py-10 border-t border-line first:border-t-0">
-      <div className="grid sm:grid-cols-[140px_1fr] gap-4 sm:gap-10">
+      <MarkReveal markId={MARKS[project.id]} className="grid sm:grid-cols-[140px_1fr] gap-4 sm:gap-10">
         <div className="font-mono text-xs text-ink-dim uppercase tracking-wider pt-1">
           {number} &middot; {project.period}
         </div>
@@ -85,7 +90,7 @@ function ProjectRow({ project, number }) {
             )}
           </div>
         </div>
-      </div>
+      </MarkReveal>
 
       {project.benchmark && (
         <div className="sm:ml-[184px] mt-8">
@@ -134,22 +139,27 @@ function CompactProjectRow({ project }) {
   return (
     <div className="relative py-5 border-t border-line first:border-t-0">
       {NOTES[project.id]}
-      <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-        <h4 className="font-display text-base text-ink">{project.title}</h4>
-        <span className="font-mono text-[10px] uppercase tracking-wider text-ink-dim shrink-0">
-          {project.period}
-        </span>
-      </div>
-      <p className="font-mono text-[11px] uppercase tracking-widest text-red mt-1">
-        {project.tag}
-      </p>
+      <MarkReveal markId={MARKS[project.id]}>
+        <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+          <h4 className="font-display text-base text-ink">{project.title}</h4>
+          <span className="font-mono text-[10px] uppercase tracking-wider text-ink-dim shrink-0">
+            {project.period}
+          </span>
+        </div>
+        <p className="font-mono text-[11px] uppercase tracking-widest text-red mt-1">
+          {project.tag}
+        </p>
+      </MarkReveal>
       <Typed
         order={ORDERS[project.id]}
         script={projectScripts[project.id]}
         as="p"
         className="font-body text-sm text-ink/80 mt-2 max-w-2xl leading-snug"
       />
-      <div className="flex flex-wrap gap-x-3 gap-y-1 mt-2">
+      <MarkReveal
+        markId={MARKS[project.id]}
+        className="flex flex-wrap gap-x-3 gap-y-1 mt-2"
+      >
         {project.meta.map((m) => (
           <span
             key={m}
@@ -158,7 +168,7 @@ function CompactProjectRow({ project }) {
             {m}
           </span>
         ))}
-      </div>
+      </MarkReveal>
     </div>
   );
 }

@@ -2,7 +2,7 @@ import { useState } from "react";
 
 const BIBTEX = `@misc{clark2026portfolio,
   author       = {Clark, Ollie},
-  title        = {Statistics, optimisation, and the cost of being wrong at scale},
+  title        = {Evidence, not assertion},
   year         = {2026},
   howpublished = {Working paper (personal portfolio)},
   note         = {MDatSci (Data Science), University of Warwick}
