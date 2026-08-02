@@ -1,6 +1,7 @@
 import references from "../data/references";
 import Compiled from "../typeset/Compiled";
 import SectionEyebrow from "./SectionEyebrow";
+import SectionDivider from "./SectionDivider";
 import { useMarkFired } from "../typeset/TypesetContext";
 
 function Entry({ r }) {
@@ -31,7 +32,8 @@ function Entry({ r }) {
 // section itself fires any remaining ones via the Compiled marks list.
 export default function References({ order }) {
   return (
-    <section id="references" className="border-t border-line">
+    <section id="references">
+      <SectionDivider markId="sec-refs" />
       <div className="max-w-4xl mx-auto px-6 sm:px-10 py-20 sm:py-24">
         <SectionEyebrow n={3} title="References" />
         <Compiled

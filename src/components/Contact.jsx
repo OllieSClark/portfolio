@@ -1,6 +1,7 @@
 import Typed from "../typeset/Typed";
 import Compiled from "../typeset/Compiled";
 import SectionEyebrow from "./SectionEyebrow";
+import SectionDivider from "./SectionDivider";
 import PlateCluster from "./PlateCluster";
 import { correspondenceHead, correspondenceBody } from "../data/paper";
 import trio from "../assets/plates/trio.jpg";
@@ -13,7 +14,8 @@ const EMAIL = "ollie@orcus.co.uk";
 
 export default function Contact() {
   return (
-    <section id="correspondence" className="border-t border-line">
+    <section id="correspondence">
+      <SectionDivider markId="sec-contact" />
       <div className="max-w-4xl mx-auto px-6 sm:px-10 py-20 sm:py-28 relative">
         <SectionEyebrow n={4} title="Correspondence" className="mb-4" />
         <Typed

@@ -4,6 +4,7 @@ import ResultsTable from "./ResultsTable";
 import RedMarginNote from "./RedMarginNote";
 import Sidenote from "./Sidenote";
 import SectionEyebrow from "./SectionEyebrow";
+import SectionDivider from "./SectionDivider";
 import PlateCluster from "./PlateCluster";
 import Typed from "../typeset/Typed";
 import Compiled from "../typeset/Compiled";
@@ -40,7 +41,7 @@ function ProjectRow({ project, number }) {
           <RedMarginNote fireId="r2" resolveId="r2-resolved">
             needs evidence (R2)
           </RedMarginNote>
-          <Sidenote n={1}>
+          <Sidenote n={1} fireId="sec-results">
             The original plan was gradient methods (Adam, L-BFGS); the pivot
             to trust region came mid-project, when gradient methods turned
             out not to exploit the adjusted-score structure, a documented,
@@ -88,7 +89,7 @@ function ProjectRow({ project, number }) {
 
       {project.benchmark && (
         <div className="sm:ml-[184px] mt-8">
-          <Sidenote n={2}>
+          <Sidenote n={2} fireId="r2-resolved">
             Benchmarks are the package&rsquo;s own scenarios, and the 394 tests
             are the original author&rsquo;s, which is rather the point.
           </Sidenote>
@@ -112,7 +113,7 @@ function ProjectRow({ project, number }) {
 // kept here rather than inline so CompactProjectRow stays a plain map.
 const NOTES = {
   bny: (
-    <Sidenote n={3}>
+    <Sidenote n={3} fireId="sec-bny">
       Present tense is deliberate. What an intern may publish is a
       negotiation that concludes in mid-August; the write-up follows the
       lawyers.
@@ -122,7 +123,7 @@ const NOTES = {
     <RedMarginNote fireId="wq-note">cite? or does the certificate count</RedMarginNote>
   ),
   diss: (
-    <Sidenote n={4}>
+    <Sidenote n={4} fireId="sec-diss">
       Starts July 2026. A plan, not results. This entry gets rewritten from
       actual status as the year progresses.
     </Sidenote>
@@ -164,7 +165,8 @@ function CompactProjectRow({ project }) {
 
 export default function Projects() {
   return (
-    <section id="results" className="border-t border-line">
+    <section id="results">
+      <SectionDivider markId="sec-results" />
       <div className="max-w-4xl mx-auto px-6 sm:px-10 py-20 sm:py-28 relative">
         <SectionEyebrow n={2} title="Results" className="mb-4" />
         <h2 className="font-display text-fluid-md text-ink mb-8">

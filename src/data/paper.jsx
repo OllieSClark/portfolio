@@ -63,6 +63,7 @@ export const projectScripts = {
     t("."),
   ],
   bny: [
+    mark("sec-bny"),
     t(
       "Currently interning in the Foundations team, working on workflow orchestration and diagnostics tooling built around AI agents. Full write-up to follow once the internship concludes and disclosure limits are confirmed.",
       { cps: 120 }
@@ -81,6 +82,7 @@ export const projectScripts = {
     ),
   ],
   diss: [
+    mark("sec-diss"),
     t("Upcoming (starts July 2026): investigating whether diffusion models'", {
       cps: 130,
     }),

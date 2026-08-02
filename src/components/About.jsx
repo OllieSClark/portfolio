@@ -2,6 +2,7 @@ import Typed from "../typeset/Typed";
 import Compiled from "../typeset/Compiled";
 import RedMarginNote from "./RedMarginNote";
 import SectionEyebrow from "./SectionEyebrow";
+import SectionDivider from "./SectionDivider";
 import Claim from "./Claim";
 import AcademicTable from "./AcademicTable";
 import { introduction } from "../data/paper";
@@ -73,7 +74,8 @@ const avgEvidence = (
 
 export default function About() {
   return (
-    <section id="introduction" className="border-t border-line">
+    <section id="introduction">
+      <SectionDivider markId="sec-intro" />
       <div className="max-w-4xl mx-auto px-6 sm:px-10 py-20 sm:py-28">
         <SectionEyebrow n={1} title="Introduction" />
         <div className="grid sm:grid-cols-[2fr_1fr] gap-12">
