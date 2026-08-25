@@ -15,7 +15,7 @@ import stairs from "../assets/plates/stairs.jpg";
 import trophy from "../assets/plates/trophy.jpg";
 
 // Document-order slots for the typed regions in §2 (spaced for insertion).
-const ORDERS = { brglm2: 80, bny: 100, wq: 110, diss: 120 };
+const ORDERS = { brglm2: 80, bny: 100, bnyDesignTime: 103, bnyDeployment: 106, bnyDemos: 109, wq: 110, diss: 120 };
 // Each project's own opening mark — gates its static header furniture (title,
 // date, tag, links) so it appears alongside the typing rather than sitting
 // there pre-rendered from load.
@@ -26,7 +26,8 @@ const MARKS = { brglm2: "sec-results", bny: "sec-bny", wq: "sec-wq", diss: "sec-
 // started) is honest about that in its own copy, so it shouldn't share the
 // same visual weight: it reads as a compact "current & upcoming" strip.
 const featured = projects.find((p) => p.id === "brglm2");
-const current = projects.filter((p) => p.id !== "brglm2");
+const bny = projects.find((p) => p.id === "bny");
+const upcoming = projects.filter((p) => p.id !== "brglm2" && p.id !== "bny");
 
 function ProjectRow({ project, number }) {
   return (
@@ -43,21 +44,47 @@ function ProjectRow({ project, number }) {
           <h3 className="font-display text-fluid-sm text-ink">
             {project.title}
           </h3>
-          <RedMarginNote fireId="r2" resolveId="r2-resolved">
-            needs evidence (R2)
-          </RedMarginNote>
-          <Sidenote n={1} fireId="sec-results">
-            The original plan was gradient methods (Adam, L-BFGS); the pivot
-            to trust region came mid-project, when gradient methods turned
-            out not to exploit the adjusted-score structure, a documented,
-            examiner-praised judgement call.
-          </Sidenote>
+          {project.id === "brglm2" && (
+            <>
+              <RedMarginNote fireId="r2" resolveId="r2-resolved">
+                needs evidence (R2)
+              </RedMarginNote>
+              <Sidenote n={1} fireId="sec-results">
+                The original plan was gradient methods (Adam, L-BFGS); the
+                pivot to trust region came mid-project, when gradient methods
+                turned out not to exploit the adjusted-score structure, a
+                documented, examiner-praised judgement call.
+              </Sidenote>
+            </>
+          )}
           <Typed
             order={ORDERS[project.id]}
             script={projectScripts[project.id]}
             as="p"
             className="font-body text-ink/90 mt-3 max-w-2xl leading-relaxed"
           />
+          {project.id === "bny" && (
+            <>
+              <Typed
+                order={ORDERS.bnyDesignTime}
+                script={projectScripts.bnyDesignTime}
+                as="p"
+                className="font-body text-ink/90 mt-3 max-w-2xl leading-relaxed"
+              />
+              <Typed
+                order={ORDERS.bnyDeployment}
+                script={projectScripts.bnyDeployment}
+                as="p"
+                className="font-body text-ink/90 mt-3 max-w-2xl leading-relaxed"
+              />
+              <Typed
+                order={ORDERS.bnyDemos}
+                script={projectScripts.bnyDemos}
+                as="p"
+                className="font-body text-ink/90 mt-3 max-w-2xl leading-relaxed"
+              />
+            </>
+          )}
           <div className="flex flex-wrap gap-x-4 gap-y-2 mt-5">
             {project.meta.map((m) => (
               <span
@@ -117,18 +144,11 @@ function ProjectRow({ project, number }) {
 // The compact companions to the annotation attached to each row below —
 // kept here rather than inline so CompactProjectRow stays a plain map.
 const NOTES = {
-  bny: (
-    <Sidenote n={3} fireId="sec-bny">
-      Present tense is deliberate. What an intern may publish is a
-      negotiation that concludes in mid-August; the write-up follows the
-      lawyers.
-    </Sidenote>
-  ),
   wq: (
     <RedMarginNote fireId="wq-note">cite? or does the certificate count</RedMarginNote>
   ),
   diss: (
-    <Sidenote n={4} fireId="sec-diss">
+    <Sidenote n={3} fireId="sec-diss">
       Starts July 2026. A plan, not results. This entry gets rewritten from
       actual status as the year progresses.
     </Sidenote>
@@ -196,12 +216,16 @@ export default function Projects() {
           <ProjectRow project={featured} number="2.1" />
         </div>
 
+        <div>
+          <ProjectRow project={bny} number="2.2" />
+        </div>
+
         <div className="mt-12">
           <p className="font-mono text-xs text-ink-dim uppercase tracking-wider mb-1">
-            2.2 &middot; Current &amp; upcoming
+            2.3 &middot; Current &amp; upcoming
           </p>
           <div>
-            {current.map((p) => (
+            {upcoming.map((p) => (
               <CompactProjectRow key={p.id} project={p} />
             ))}
           </div>

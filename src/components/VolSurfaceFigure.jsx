@@ -263,7 +263,7 @@ export default function VolSurfaceFigure({ className = "" }) {
         <span className="fig-number">Fig. 1.</span> Wireframe implied-volatility
         surface &sigma;(k,&nbsp;&tau;), recalibrating live
         {useReal
-          ? ` — ${validSnapshot.instrument} options, ${validSnapshot.asOf} close (source: Deribit).`
+          ? ` — ${validSnapshot.instrument} options, ${validSnapshot.asOf} snapshot (source: Deribit).`
           : " (illustrative skew and term structure, not market data)."}
       </figcaption>
     </figure>

@@ -18,9 +18,9 @@ const projects = [
   },
   {
     id: "bny",
-    tag: "in progress: internship",
+    tag: "delivered: software engineering internship",
     title: "Software Engineering Intern, BNY",
-    period: "8 June 2026 – mid-August 2026",
+    period: "8 June 2026 – 14 August 2026",
     meta: [
       "Software engineering",
       "Workflow orchestration",

@@ -65,7 +65,27 @@ export const projectScripts = {
   bny: [
     mark("sec-bny"),
     t(
-      "Currently interning in the Foundations team, working on workflow orchestration and diagnostics tooling built around AI agents. Full write-up to follow once the internship concludes and disclosure limits are confirmed.",
+      "Interned on the Foundations team, building AI-powered diagnostics into a Camunda-based workflow orchestration platform, spanning both design-time and deployed-time tooling.",
+      { cps: 120 }
+    ),
+  ],
+  bnyDesignTime: [
+    t(
+      "At design-time: a suite of diagnostic agents performing structural and execution analysis on process models within a sandboxed environment, paired with an interactive copilot for exploring findings, staging AI-generated fixes, and iterating on the model. Shipped to QA, where I gathered real feedback from teams building on the platform.",
+      { cps: 120 }
+    ),
+  ],
+  bnyDeployment: [
+    t(
+      "At deployment: a multi-step reasoning agent that routes through a backend I built as an MCP server, streaming over websockets to fetch live process data and support power-user features — slash-command skills, @-context injection. Owned the AI-centric backend, all model connectivity, plus the front-end integration work to surface it, and picked up the Camunda spec along the way to build workflows that actually held up.",
+      { cps: 120 }
+    ),
+  ],
+  bnyDemos: [
+    t("Delivered 8+ demos over the internship, including to ", { cps: 120 }),
+    typo("seniro", "senior"),
+    t(
+      " leadership, and presented as part of the Foundations showcase series to an audience of 80+.",
       { cps: 120 }
     ),
   ],
