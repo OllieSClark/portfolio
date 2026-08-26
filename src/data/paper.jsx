@@ -13,7 +13,7 @@ const speedupEvidence = (
     <span className="block mt-1 text-ink-dim">
       across dense and sparse benchmark scenarios, coefficient agreement
       &lt;10&#8315;&#8310; vs. the original package, 394/394 tests passing. See
-      Fig. 2 and Table 2, &sect;2.1.
+      Fig. 2 and Table 2, &sect;2.2.
     </span>
   </>
 );
@@ -27,7 +27,7 @@ export const heroAbstract = [
   t("Data science ", { cps: 95 }),
   typo("studnet", "student"),
   t(
-    " at Warwick specialising in quantitative finance, the intersection of statistical rigour (GLMs, mathematical finance) and modern ML (neural networks, optimisation). Most recent work: a from-scratch trust-region optimiser that made bias-reduced GLM fitting",
+    " at Warwick, working where statistical rigour meets systems that have to hold up in front of real users. Most recently at BNY, building AI-powered diagnostics into a workflow-orchestration platform and shipping it to the teams building on it. Before that, a from-scratch trust-region optimiser that made bias-reduced GLM fitting",
     { cps: 95 }
   ),
   swap(" much faster", "up to 168.6× faster", {
@@ -40,7 +40,7 @@ export const heroAbstract = [
 export const introduction = [
   mark("sec-intro"),
   t(
-    "MDatSci (Data Science) student at Warwick, three years into a degree built around exactly the join between statistics and machine learning: probability and mathematical statistics, then modern ML, neural computing, and mathematical finance. I'm drawn to the problems that sit in that overlap — GLMs give valid, interpretable inference; ML predicts better when the true relationship won't fit a closed form; quantitative finance runs on both.",
+    "MDatSci (Data Science) student at Warwick, three years into a degree built around exactly the join between statistics and machine learning: probability and mathematical statistics, then modern ML, neural computing, and statistical modelling. I'm drawn to the problems that sit in that overlap — GLMs give valid, interpretable inference; ML predicts better when the true relationship won't fit a closed form. The interesting part is knowing which one a problem actually needs, then building something people can put their hands on.",
     { cps: 100 }
   ),
   mark("intro-done"),
@@ -48,7 +48,7 @@ export const introduction = [
 
 export const projectScripts = {
   brglm2: [
-    mark("sec-results"),
+    mark("sec-brglm2"),
     t(
       "GLMs give valid, interpretable inference — the tradeoff is a fitting routine that doesn't scale. Forked brglm2 (the standard R package for bias-reduction in GLMs) and replaced its default quasi-Fisher scoring fit routine with a trust-region framework built from scratch: a CG-Steihaug subproblem solver",
       { cps: 130 }
@@ -59,10 +59,13 @@ export const projectScripts = {
       " with Jacobi preconditioning, adaptive hat-value scheduling, sparse Cholesky dispatch, and a vectorised rewrite of the median bias-reduction adjustment. Bias-reduced estimation is needed most exactly where it is most expensive: high-dimensional, separated, or sparse data. A method that doesn't scale is unusable in the regime it was built for. Full implementation public",
       { cps: 130 }
     ),
-    cite(6),
+    cite(5),
     t("."),
   ],
   bny: [
+    // BNY now types first in §2, so it carries the section-opening mark that
+    // gates the §2 divider and the "§2 Results" nav link.
+    mark("sec-results"),
     mark("sec-bny"),
     t(
       "Interned on the Foundations team, building AI-powered diagnostics into a Camunda-based workflow orchestration platform, spanning both design-time and deployed-time tooling.",
@@ -92,36 +95,36 @@ export const projectScripts = {
   wq: [
     mark("sec-wq"),
     t(
-      "Designed and backtested alpha signals on WorldQuant's BRAIN platform",
+      "Built and evaluated predictive models on WorldQuant's BRAIN platform",
       { cps: 120 }
     ),
-    swap(", and did well", ", progressing to the final round of the International Quant Championship"),
+    swap(", and did well", ", reaching the national final — one of eight teams, ranked 39th globally out of 37,000+ entrants"),
     mark("wq-note"),
     t(
-      ". Focus on signal construction, turnover/decay trade-offs, and robustness across simulation regimes.",
+      ". Presented to a judging panel and fielded live Q&A. The part that actually mattered was honest evaluation: holding out properly, and not fooling yourself with a result that looks good and isn't.",
+      { cps: 120 }
+    ),
+  ],
+  dss: [
+    mark("sec-dss"),
+    t(
+      "Elected president, leading a 15-member executive team. I own the society's relationships with the Statistics and Mathematics departments and with sponsors including Jane Street and WorldQuant. Previously Outreach Head, securing industry partnerships and connecting 80+ students with people already doing the work.",
       { cps: 120 }
     ),
   ],
   diss: [
     mark("sec-diss"),
-    t("Upcoming (starts July 2026): investigating whether diffusion models'", {
-      cps: 130,
-    }),
-    cite(3),
-    t(" better-calibrated implied ", { cps: 130 }),
-    typo("volitility", "volatility"),
     t(
-      " surfaces translate into a measurable options-hedging edge over GAN-based approaches",
-      { cps: 130 }
-    ),
-    cite(5),
-    t(
-      ", extending very recent exact-conditional diffusion methodology",
+      "Upcoming (starts July 2026): score-based generative modelling. Standard diffusion models condition on a learned approximate drift; the question is whether exact conditional simulation, via explicit forward-backward SDE bridging",
       { cps: 130 }
     ),
     cite(4),
+    t(", generates better-calibrated samples", { cps: 130 }),
+    cite(3),
+    t(". The test bed is implied ", { cps: 130 }),
+    typo("volitility", "volatility"),
     t(
-      " to a live financial dataset. Supervised by Prof. Paul Jenkins, Department of Statistics, University of Warwick.",
+      " surfaces — a dataset with hard structural constraints a generated sample has to satisfy, which makes calibration failures visible rather than a matter of taste. Supervised by Prof. Paul Jenkins, Department of Statistics, University of Warwick.",
       { cps: 130 }
     ),
   ],
@@ -153,7 +156,7 @@ export const correspondenceHead = [
 
 export const correspondenceBody = [
   t(
-    "Open to quant research conversations for autumn 2026. The fastest way to reach me is email. CV below.",
+    "Open to engineering and data science conversations for autumn 2026. The fastest way to reach me is email. CV below.",
     { cps: 130 }
   ),
 ];

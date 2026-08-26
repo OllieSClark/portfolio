@@ -11,7 +11,7 @@ const keywords = [
   "Numerical optimisation",
   "Generalised linear models",
   "Generative modelling",
-  "Mathematical finance",
+  "Applied AI and agent tooling",
   "Statistical computing (R, Python)",
 ];
 
@@ -22,7 +22,7 @@ const y3Evidence = (
     <span className="block font-mono text-ink">Year 3 — 78.5% (First)</span>
     <span className="block mt-1 text-ink-dim">
       CS342 Machine Learning 86, ST349 ML Frameworks 84, CS331 Neural
-      Computing 72, ST339 Mathematical Finance 73. See Table 1, &sect;1.
+      Computing 72. See Table 1, &sect;1.
     </span>
   </>
 );
@@ -33,7 +33,7 @@ const prizeEvidence = (
     <span className="block mt-1 text-ink-dim">
       Final report &amp; viva also graded 89 (Grade 1). Awarded the Best Data
       Science Third-Year Prize by the Department of Computer Science. Basis
-      of the brglm2 work, &sect;2.1. See Table 1, &sect;1.
+      of the brglm2 work, &sect;2.2. See Table 1, &sect;1.
     </span>
   </>
 );

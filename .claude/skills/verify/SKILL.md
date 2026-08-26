@@ -21,7 +21,7 @@ localhost:5173. Chromium binaries are already present on this machine.
 
 Flows worth driving:
 - Load at 1440×900: nav §-links should be hidden (opacity 0) except brand/CV;
-  hero title types; Fig. 1 (canvas vol surface) compiles in.
+  hero title types; Fig. 1 (canvas live-data surface) compiles in.
 - Click "skip typesetting" → all typed regions finish, nav links all visible,
   reference entries all opacity 1.
 - Jump-to-bottom probe (`End` key ~0.5s after load): all sections must

@@ -17,7 +17,7 @@ export default function CompileFooter() {
   // this credit lives outside the typed prose, so its citation fires as soon
   // as the footer itself is on the page rather than waiting on a typed cite()
   useEffect(() => {
-    fireMark("cite-7");
+    fireMark("cite-6");
   }, [fireMark]);
 
   return (
@@ -35,7 +35,7 @@ export default function CompileFooter() {
         <span className={allDone ? "text-red" : ""}>{version}</span> &middot;
         &copy; {new Date().getFullYear()} Ollie Clark &middot; typeset with{" "}
         <ClaudeMark className="mx-0.5" />
-        Claude<sup className="ts-cite"><a href="#ref-7">[7]</a></sup>
+        Claude<sup className="ts-cite"><a href="#ref-6">[6]</a></sup>
       </p>
     </footer>
   );

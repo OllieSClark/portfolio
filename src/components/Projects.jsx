@@ -15,19 +15,33 @@ import stairs from "../assets/plates/stairs.jpg";
 import trophy from "../assets/plates/trophy.jpg";
 
 // Document-order slots for the typed regions in §2 (spaced for insertion).
-const ORDERS = { brglm2: 80, bny: 100, bnyDesignTime: 103, bnyDeployment: 106, bnyDemos: 109, wq: 110, diss: 120 };
+// These must stay ascending in the same sequence the rows appear in the DOM —
+// the scheduler plays one region at a time, top-down, and a numerically-early
+// region sitting visually late stalls everything behind it.
+const ORDERS = {
+  bny: 80,
+  bnyDesignTime: 82,
+  bnyDeployment: 84,
+  bnyDemos: 86,
+  brglm2: 90,
+  wq: 110,
+  dss: 115,
+  diss: 120,
+};
 // Each project's own opening mark — gates its static header furniture (title,
 // date, tag, links) so it appears alongside the typing rather than sitting
-// there pre-rendered from load.
-const MARKS = { brglm2: "sec-results", bny: "sec-bny", wq: "sec-wq", diss: "sec-diss" };
+// there pre-rendered from load. Note "sec-results" (the §2 divider + nav link)
+// is fired by whichever script types first, which is now bny — see paper.jsx.
+const MARKS = { brglm2: "sec-brglm2", bny: "sec-bny", wq: "sec-wq", dss: "sec-dss", diss: "sec-diss" };
 
-// brglm2 is the one proven, quantified result — it gets the full row, the
-// benchmark figure, the table. Everything else (in progress, or not yet
-// started) is honest about that in its own copy, so it shouldn't share the
-// same visual weight: it reads as a compact "current & upcoming" strip.
-const featured = projects.find((p) => p.id === "brglm2");
+// BNY is the shipped, in-the-wild engineering work and leads §2; brglm2 is the
+// one proven, quantified result and carries the benchmark figure and table.
+// Those two get full rows. Everything else (a past competition, an elected
+// role, a dissertation not yet started) is honest about that in its own copy,
+// so it shouldn't share the same visual weight: it reads as a compact strip.
 const bny = projects.find((p) => p.id === "bny");
-const upcoming = projects.filter((p) => p.id !== "brglm2" && p.id !== "bny");
+const featured = projects.find((p) => p.id === "brglm2");
+const alsoOnRecord = projects.filter((p) => p.id !== "brglm2" && p.id !== "bny");
 
 function ProjectRow({ project, number }) {
   return (
@@ -49,7 +63,7 @@ function ProjectRow({ project, number }) {
               <RedMarginNote fireId="r2" resolveId="r2-resolved">
                 needs evidence (R2)
               </RedMarginNote>
-              <Sidenote n={1} fireId="sec-results">
+              <Sidenote n={1} fireId="sec-brglm2">
                 The original plan was gradient methods (Adam, L-BFGS); the
                 pivot to trust region came mid-project, when gradient methods
                 turned out not to exploit the adjusted-score structure, a
@@ -126,12 +140,12 @@ function ProjectRow({ project, number }) {
             are the original author&rsquo;s, which is rather the point.
           </Sidenote>
           <Typed
-            order={85}
+            order={95}
             script={brglm2Result}
             as="p"
             className="font-body text-ink/90 max-w-2xl leading-relaxed mb-6"
           />
-          <Compiled order={90} marks={["r2-resolved"]}>
+          <Compiled order={100} marks={["r2-resolved"]}>
             <BenchmarkFigure />
             <ResultsTable className="mt-8" />
           </Compiled>
@@ -213,19 +227,19 @@ export default function Projects() {
           ]}
         />
         <div>
-          <ProjectRow project={featured} number="2.1" />
+          <ProjectRow project={bny} number="2.1" />
         </div>
 
         <div>
-          <ProjectRow project={bny} number="2.2" />
+          <ProjectRow project={featured} number="2.2" />
         </div>
 
         <div className="mt-12">
           <p className="font-mono text-xs text-ink-dim uppercase tracking-wider mb-1">
-            2.3 &middot; Current &amp; upcoming
+            2.3 &middot; Also on record
           </p>
           <div>
-            {upcoming.map((p) => (
+            {alsoOnRecord.map((p) => (
               <CompactProjectRow key={p.id} project={p} />
             ))}
           </div>

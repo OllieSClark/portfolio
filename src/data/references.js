@@ -38,15 +38,6 @@ const references = [
   },
   {
     id: 5,
-    authors: "Vuletić, M. and Cont, R.",
-    year: 2024,
-    title:
-      "VolGAN: a generative model for arbitrage-free implied volatility surfaces",
-    venue: "Applied Mathematical Finance, 31(4), 203–238",
-    url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4617536",
-  },
-  {
-    id: 6,
     authors: "Clark, O.",
     year: 2026,
     title: "brglm2, feat/trust-region: a trust-region fitting engine for bias-reduced GLMs",
@@ -54,7 +45,7 @@ const references = [
     url: "https://github.com/OllieSClark/brglm2",
   },
   {
-    id: 7,
+    id: 6,
     authors: "Anthropic",
     year: 2026,
     title: "Claude (Fable 5) [Large language model]",

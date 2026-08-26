@@ -1,10 +1,14 @@
 import { useEffect, useRef } from "react";
 import ivSnapshot from "../data/iv-surface.json";
 
-// Figure 1 — a true 3D wireframe implied-volatility surface σ(k, τ):
+// Figure 1 — a true 3D wireframe surface over a (moneyness, maturity) grid:
 // perspective-projected mesh with painter's-sorted quads (paper-filled for
-// hidden-line removal), depth-cued ink strokes, a red ATM ridge, and a slow
-// sinusoidal yaw sway. Recalibrates live each frame via a small wobble term.
+// hidden-line removal), depth-cued ink strokes, a red ridge along k = 0, and a
+// slow sinusoidal yaw sway. Recalibrates live each frame via a small wobble.
+//
+// The caption deliberately frames this as the data pipeline rather than the
+// instrument: what it demonstrates is the scheduled fetch/validate/commit
+// loop, not domain expertise in options.
 //
 // Base shape is real when a valid snapshot is baked in (see
 // scripts/update-iv-surface.mjs — a daily GitHub Action fetches Deribit's
@@ -260,11 +264,12 @@ export default function VolSurfaceFigure({ className = "" }) {
     <figure className={className}>
       <canvas ref={canvasRef} className="w-full h-full" aria-hidden="true" />
       <figcaption className="fig-caption mt-2">
-        <span className="fig-number">Fig. 1.</span> Wireframe implied-volatility
-        surface &sigma;(k,&nbsp;&tau;), recalibrating live
+        <span className="fig-number">Fig. 1.</span> A live figure. A scheduled
+        job refits this grid from a public market feed each morning and commits
+        the snapshot; a failed run falls back to a labelled synthetic surface
         {useReal
-          ? ` — ${validSnapshot.instrument} options, ${validSnapshot.asOf} snapshot (source: Deribit).`
-          : " (illustrative skew and term structure, not market data)."}
+          ? ` — ${validSnapshot.asOf} snapshot (${validSnapshot.instrument} options, source: Deribit).`
+          : " — currently showing that fallback, not market data."}
       </figcaption>
     </figure>
   );
