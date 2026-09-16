@@ -33,7 +33,7 @@ export const heroAbstract = [
   swap(" much faster", "up to 168.6× faster", {
     wrap: (txt) => <Claim evidence={speedupEvidence}>{txt}</Claim>,
   }),
-  cite(1),
+  cite(5),
   t("."),
 ];
 
@@ -53,13 +53,13 @@ export const projectScripts = {
       "GLMs give valid, interpretable inference — the tradeoff is a fitting routine that doesn't scale. Forked brglm2 (the standard R package for bias-reduction in GLMs) and replaced its default quasi-Fisher scoring fit routine with a trust-region framework built from scratch: a CG-Steihaug subproblem solver",
       { cps: 130 }
     ),
-    cite(2),
+    cite(6),
     mark("r2"),
     t(
       " with Jacobi preconditioning, adaptive hat-value scheduling, sparse Cholesky dispatch, and a vectorised rewrite of the median bias-reduction adjustment. Bias-reduced estimation is needed most exactly where it is most expensive: high-dimensional, separated, or sparse data. A method that doesn't scale is unusable in the regime it was built for. Full implementation public",
       { cps: 130 }
     ),
-    cite(5),
+    cite(2),
     t("."),
   ],
   bny: [
@@ -108,19 +108,19 @@ export const projectScripts = {
   dss: [
     mark("sec-dss"),
     t(
-      "Elected president, leading a 15-member executive team. I own the society's relationships with the Statistics and Mathematics departments and with sponsors including Jane Street and WorldQuant. Previously Outreach Head, securing industry partnerships and connecting 80+ students with people already doing the work.",
+      "Elected president for 2025/26, leading a 15-member executive team. I owned the society's relationships with the Statistics and Mathematics departments and with sponsors including Jane Street and WorldQuant. Previously Outreach Head, securing industry partnerships and connecting 80+ students with people already doing the work.",
       { cps: 120 }
     ),
   ],
   diss: [
     mark("sec-diss"),
     t(
-      "Upcoming (starts July 2026): score-based generative modelling. Standard diffusion models condition on a learned approximate drift; the question is whether exact conditional simulation, via explicit forward-backward SDE bridging",
+      "In progress (started August 2026): score-based generative modelling. Standard diffusion models condition on a learned approximate drift; the question is whether exact conditional simulation, via explicit forward-backward SDE bridging",
       { cps: 130 }
     ),
-    cite(4),
-    t(", generates better-calibrated samples", { cps: 130 }),
     cite(3),
+    t(", generates better-calibrated samples", { cps: 130 }),
+    cite(4),
     t(". The test bed is implied ", { cps: 130 }),
     typo("volitility", "volatility"),
     t(

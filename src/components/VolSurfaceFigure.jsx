@@ -6,9 +6,9 @@ import ivSnapshot from "../data/iv-surface.json";
 // hidden-line removal), depth-cued ink strokes, a red ridge along k = 0, and a
 // slow sinusoidal yaw sway. Recalibrates live each frame via a small wobble.
 //
-// The caption deliberately frames this as the data pipeline rather than the
-// instrument: what it demonstrates is the scheduled fetch/validate/commit
-// loop, not domain expertise in options.
+// The caption names the instrument first, then credits the pipeline behind it
+// — what the figure is, then where the data comes from. Keep it to one line;
+// the mechanics belong in this comment, not in front of the reader.
 //
 // Base shape is real when a valid snapshot is baked in (see
 // scripts/update-iv-surface.mjs — a daily GitHub Action fetches Deribit's
@@ -264,12 +264,11 @@ export default function VolSurfaceFigure({ className = "" }) {
     <figure className={className}>
       <canvas ref={canvasRef} className="w-full h-full" aria-hidden="true" />
       <figcaption className="fig-caption mt-2">
-        <span className="fig-number">Fig. 1.</span> A live figure. A scheduled
-        job refits this grid from a public market feed each morning and commits
-        the snapshot; a failed run falls back to a labelled synthetic surface
+        <span className="fig-number">Fig. 1.</span> Implied volatility surface
+        &sigma;(k,&nbsp;&tau;)
         {useReal
-          ? ` — ${validSnapshot.asOf} snapshot (${validSnapshot.instrument} options, source: Deribit).`
-          : " — currently showing that fallback, not market data."}
+          ? ` — ${validSnapshot.instrument} options, ${validSnapshot.asOf}, refit daily from Deribit by a scheduled job.`
+          : " — illustrative shape, not market data: the daily refit is stale."}
       </figcaption>
     </figure>
   );

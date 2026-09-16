@@ -24,9 +24,11 @@ const ORDERS = {
   bnyDeployment: 84,
   bnyDemos: 86,
   brglm2: 90,
-  wq: 110,
-  dss: 115,
-  diss: 120,
+  // §2.3 order must track the projects.js array order, which now leads with
+  // the dissertation — see the ascending-order note above.
+  diss: 110,
+  wq: 115,
+  dss: 120,
 };
 // Each project's own opening mark — gates its static header furniture (title,
 // date, tag, links) so it appears alongside the typing rather than sitting
@@ -36,9 +38,10 @@ const MARKS = { brglm2: "sec-brglm2", bny: "sec-bny", wq: "sec-wq", dss: "sec-ds
 
 // BNY is the shipped, in-the-wild engineering work and leads §2; brglm2 is the
 // one proven, quantified result and carries the benchmark figure and table.
-// Those two get full rows. Everything else (a past competition, an elected
-// role, a dissertation not yet started) is honest about that in its own copy,
-// so it shouldn't share the same visual weight: it reads as a compact strip.
+// Those two get full rows. Everything else (a dissertation in its early
+// months, a past competition, a concluded elected role) is honest about that
+// in its own copy, so it shouldn't share the same visual weight: it reads as
+// a compact strip.
 const bny = projects.find((p) => p.id === "bny");
 const featured = projects.find((p) => p.id === "brglm2");
 const alsoOnRecord = projects.filter((p) => p.id !== "brglm2" && p.id !== "bny");
@@ -163,8 +166,8 @@ const NOTES = {
   ),
   diss: (
     <Sidenote n={3} fireId="sec-diss">
-      Starts July 2026. A plan, not results. This entry gets rewritten from
-      actual status as the year progresses.
+      Started August 2026, and early with it &mdash; a direction, not results.
+      This entry gets rewritten from actual status as the year progresses.
     </Sidenote>
   ),
 };

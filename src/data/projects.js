@@ -29,6 +29,14 @@ const projects = [
     link: null,
   },
   {
+    id: "diss",
+    tag: "in preparation: dissertation",
+    title: "Exact conditional sampling in diffusion models",
+    period: "MDatSci final year, August 2026 – May 2027",
+    meta: ["Generative modelling", "Stochastic calculus", "Warwick Statistics"],
+    link: null,
+  },
+  {
     id: "wq",
     tag: "presented: competition finalist",
     title: "WorldQuant BRAIN: International Quant Championship, Finalist",
@@ -38,18 +46,10 @@ const projects = [
   },
   {
     id: "dss",
-    tag: "in progress: elected role",
+    tag: "delivered: elected role",
     title: "President, Warwick Data Science Society",
     period: "2025/26",
     meta: ["Leadership", "Stakeholder management", "Partnerships"],
-    link: null,
-  },
-  {
-    id: "diss",
-    tag: "in preparation: dissertation",
-    title: "Exact conditional sampling in diffusion models",
-    period: "MDatSci final year, July 2026 – May 2027",
-    meta: ["Generative modelling", "Stochastic calculus", "Warwick Statistics"],
     link: null,
   },
 ];
